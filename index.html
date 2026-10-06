@@ -3,6 +3,1408 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sinov: DTM, Milliy sertifikat, IELTS va SAT testlari</title>
+<meta name="description" content="DTM, Milliy sertifikat, IELTS va SAT uchun onlayn test mashqlari: taymer, natija tahlili va taxminiy ball.">
+<meta property="og:title" content="Sinov: onlayn test mashqlari">
+<meta property="og:description" content="DTM, Milliy sertifikat, IELTS va SAT uchun onlayn testlar. Telefonda ishlaydi, bepul.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0b3c5d">
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+:root{
+  --ink:#14202e;--paper:#f3f6f8;--card:#fff;--line:#d6dde5;--muted:#5a6776;
+  --blue:#0b3c5d;--teal:#13877b;--teal-soft:#dcf1ee;
+  --amber:#b87503;--amber-soft:#fdf0d4;
+  --red:#b8332c;--red-soft:#f8dedc;--green:#237a4b;--green-soft:#dcefe3;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans","Noto Sans Arabic","Noto Sans Devanagari","PingFang SC","Microsoft YaHei",sans-serif}
+h1,h2,h3{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Noto Serif",serif;line-height:1.25;margin:0 0 .5em;letter-spacing:-.01em}
+h1{font-size:clamp(26px,5vw,42px)}
+h2{font-size:clamp(22px,3.5vw,30px)}
+h3{font-size:19px}
+p{margin:0 0 .8em}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.muted{color:var(--muted)}
+.top{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+.top .wrap{display:flex;align-items:center;gap:14px;min-height:60px;flex-wrap:wrap}
+.brand{font-family:"Iowan Old Style",Georgia,serif;font-weight:700;font-size:24px;color:var(--blue);background:none;border:0;padding:0}
+.top nav{display:flex;gap:4px;margin-inline-start:auto;flex-wrap:wrap}
+.top nav button{background:none;border:0;padding:8px 12px;border-radius:6px;color:var(--muted)}
+.top nav button.on{color:var(--blue);background:var(--teal-soft);font-weight:600}
+.langsel{width:auto;padding:6px 8px;border:1.5px solid var(--line);border-radius:6px;background:#fff}
+main{padding:28px 0 64px}
+.btn{border:1px solid var(--blue);background:var(--blue);color:#fff;padding:10px 18px;border-radius:6px;font-weight:600}
+.btn:hover{filter:brightness(1.12)}
+.btn.alt{background:#fff;color:var(--blue)}
+.btn.ghost{border-color:var(--line);background:#fff;color:var(--ink);font-weight:500}
+.btn.danger{border-color:var(--red);background:#fff;color:var(--red)}
+.btn.sm{padding:6px 12px;font-size:14px}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.pill{display:inline-block;padding:2px 10px;border-radius:99px;font-size:13px;font-weight:600}
+.p-blue{background:#dbe8f2;color:var(--blue)}
+.p-teal{background:var(--teal-soft);color:#0c6b61}
+.p-amber{background:var(--amber-soft);color:var(--amber)}
+.p-grey{background:#e9edf1;color:var(--muted)}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:22px}
+
+/* language gate */
+.gate{min-height:100vh;display:grid;place-items:center;padding:24px}
+.gate .box{max-width:560px;width:100%;text-align:center}
+.langgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:22px}
+.langgrid button{background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:16px 10px;font-size:18px;font-weight:600}
+.langgrid button:hover{border-color:var(--teal);background:var(--teal-soft)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:36px;align-items:center;padding:12px 0 36px}
+.hero p.lead{font-size:18px;color:var(--muted);max-width:52ch}
+.quick{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px}
+.quick .q{font-family:"Iowan Old Style",Georgia,serif;font-size:20px;margin-bottom:14px}
+.opt{display:flex;gap:12px;align-items:center;width:100%;text-align:start;background:#fff;border:1.5px solid var(--line);border-radius:8px;padding:11px 14px;margin-bottom:9px}
+.opt:hover{border-color:var(--teal)}
+.opt .ol{flex:none;width:28px;height:28px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;font-weight:700;font-size:14px;background:var(--paper)}
+.opt.on{border-color:var(--blue);background:#eaf2f8}
+.opt.on .ol{background:var(--blue);border-color:var(--blue);color:#fff}
+.opt.good{border-color:var(--green);background:var(--green-soft)}
+.opt.good .ol{background:var(--green);border-color:var(--green);color:#fff}
+.opt.bad{border-color:var(--red);background:var(--red-soft)}
+.opt.bad .ol{background:var(--red);border-color:var(--red);color:#fff}
+.note{font-size:14px;margin-top:6px}
+
+/* grids */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.tcard{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;display:flex;flex-direction:column;gap:6px}
+.tcard h3{margin:6px 0 0}
+.tcard p{margin:0}
+.tcard .best{color:var(--green);font-weight:600;font-size:14px}
+.tcard .btn{margin-top:auto;align-self:flex-start}
+.xcard{background:var(--card);border:1.5px solid var(--line);border-radius:10px;padding:18px;text-align:start;display:flex;flex-direction:column;gap:4px}
+.xcard:hover{border-color:var(--teal)}
+.xcard b{font-family:"Iowan Old Style",Georgia,serif;font-size:22px;color:var(--blue)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px}
+.chip{border:1px solid var(--line);background:#fff;border-radius:99px;padding:5px 14px;font-size:14px}
+.chip.on{background:var(--blue);border-color:var(--blue);color:#fff}
+
+/* exam */
+.exambar{background:var(--blue);color:#fff;position:sticky;top:0;z-index:25}
+.exambar .wrap{display:flex;align-items:center;gap:14px;min-height:58px;flex-wrap:wrap}
+.exambar .t{font-weight:600;flex:1;min-width:140px}
+.timer{font-variant-numeric:tabular-nums;font-size:22px;font-weight:700;background:rgba(255,255,255,.14);padding:4px 14px;border-radius:6px;direction:ltr}
+.timer.low{background:var(--red)}
+.examgrid{display:grid;grid-template-columns:1fr 290px;gap:22px;align-items:start}
+.qpane{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:26px}
+.qmeta{color:var(--muted);font-size:14px;margin-bottom:8px}
+.qtext{font-size:clamp(20px,3vw,25px);margin-bottom:20px;max-width:70ch}
+.navbtns{display:flex;gap:10px;justify-content:space-between;flex-wrap:wrap;margin-top:18px}
+.navpane{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;position:sticky;top:76px}
+.qgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:12px 0}
+.qn{aspect-ratio:1;border:1.5px solid var(--line);background:#fff;border-radius:6px;font-weight:600;position:relative}
+.qn.done{background:#dbe8f2;border-color:var(--blue);color:var(--blue)}
+.qn.cur{outline:3px solid var(--teal);outline-offset:1px}
+.qn.flag::after{content:"";position:absolute;top:3px;inset-inline-end:3px;width:9px;height:9px;border-radius:50%;background:var(--amber)}
+.legend{font-size:13px;color:var(--muted);display:grid;gap:3px;margin-bottom:12px}
+.sw{display:inline-block;width:12px;height:12px;border-radius:3px;border:1.5px solid var(--line);vertical-align:-1px;margin-inline-end:6px}
+
+/* result */
+.res{display:grid;grid-template-columns:240px 1fr;gap:28px;align-items:center}
+.ring{width:200px;height:200px;border-radius:50%;display:grid;place-items:center;margin:auto}
+.ring div{width:156px;height:156px;border-radius:50%;background:#fff;display:grid;place-items:center;text-align:center}
+.ring b{font-family:Georgia,serif;font-size:40px;line-height:1}
+.bar{height:10px;border-radius:5px;background:var(--line);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--teal)}
+.bar i.low{background:var(--red)}
+.bar i.mid{background:var(--amber)}
+.trow{display:grid;grid-template-columns:160px 1fr 54px;gap:12px;align-items:center;margin:9px 0;font-size:15px}
+.ai{white-space:pre-wrap;background:var(--teal-soft);border-radius:8px;padding:16px;margin-top:12px}
+.rv{border:1px solid var(--line);border-radius:10px;padding:18px;background:#fff;margin-bottom:14px}
+.rv.ok{border-inline-start:5px solid var(--green)}
+.rv.no{border-inline-start:5px solid var(--red)}
+.exp{background:var(--paper);border-radius:6px;padding:10px 12px;font-size:15px;margin-top:8px}
+
+/* tables, forms */
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+th,td{padding:10px 12px;text-align:start;border-bottom:1px solid var(--line);font-size:15px}
+th{background:var(--paper);font-weight:600}
+.scroll{overflow-x:auto}
+label{display:block;font-weight:600;font-size:14px;margin:12px 0 4px}
+input[type=text],input[type=number],select,textarea{width:100%;padding:9px 11px;border:1.5px solid var(--line);border-radius:6px;background:#fff}
+textarea{min-height:120px;resize:vertical}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0 16px}
+.opts-edit{display:grid;gap:8px}
+.opts-edit div{display:flex;gap:8px;align-items:center}
+.opts-edit input[type=radio]{width:20px;height:20px;flex:none}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:20px}
+.stat{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.stat b{display:block;font-family:Georgia,serif;font-size:28px;line-height:1.1}
+
+/* kitobdan import */
+.ctx{white-space:pre-wrap;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:14px;margin-bottom:16px;max-height:38vh;overflow:auto;font-size:15px;line-height:1.6}
+.dz{border:2px dashed var(--line);border-radius:10px;padding:14px;background:#fff}
+details summary{cursor:pointer;margin:6px 0}
+
+/* modal + toast */
+.ov{position:fixed;inset:0;background:rgba(10,25,40,.55);display:grid;place-items:center;z-index:50;padding:16px}
+.modal{background:#fff;border-radius:12px;padding:24px;max-width:460px;width:100%}
+#toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 18px;border-radius:8px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:60;max-width:90vw;text-align:center}
+#toast.show{opacity:1}
+
+@media(max-width:820px){
+  .hero,.res,.examgrid{grid-template-columns:1fr}
+  .navpane{position:static}
+  .trow{grid-template-columns:110px 1fr 46px}
+  .top nav{margin-inline-start:0;width:100%}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div id="toast" role="status" aria-live="polite"></div>
+<input type="file" id="imp" accept="application/json" hidden>
+
+<script>
+"use strict";
+/* ================= SOZLAMALAR / SETTINGS =================
+   TG_BOT      : Telegram bot nomi (@ belgisiz). Telegram orqali kirish tugmasi uchun.
+   AI_ENDPOINT : Sizning serveringiz manzili. POST {prompt, lang} -> {text}.
+                 Server ichida Claude yoki Gemini chaqiriladi (API kalit serverda saqlanadi).
+   ========================================================= */
+const CONFIG = { TG_BOT: "", AI_ENDPOINT: "", PREMIUM: false, OWNER_KEY: "o-c79d8a54" };
+
+/* ================= Tillar / Languages ================= */
+const LANGS  = ["uz","en","ru","es","fr","pt","ar","zh","hi"];
+const NATIVE = ["O'zbekcha","English","Русский","Español","Français","Português","العربية","中文","हिन्दी"];
+const AI_LANG= ["Uzbek","English","Russian","Spanish","French","Portuguese","Arabic","Chinese","Hindi"];
+/* Har bir qator: [uz, en, ru, es, fr, pt, ar, zh, hi]. Qisqa qator bo'lsa, qolgan tillar inglizcha ko'rsatiladi.
+   Yangi til qo'shish: LANGS, NATIVE, AI_LANG ga qo'shing va K dagi har qatorga tarjima qo'shing. */
+const K = {
+nav_home:["Bosh sahifa","Home","Главная","Inicio","Accueil","Início","الرئيسية","首页","होम"],
+nav_tests:["Testlar","Tests","Тесты","Pruebas","Tests","Testes","الاختبارات","测试","टेस्ट"],
+nav_results:["Natijalarim","My results","Мои результаты","Mis resultados","Mes résultats","Meus resultados","نتائجي","我的成绩","मेरे परिणाम"],
+nav_editor:["Muharrir","Editor","Редактор","Editor","Éditeur","Editor","المحرر","编辑器","एडिटर"],
+nav_profile:["Profil","Profile","Профиль","Perfil","Profil","Perfil","الملف الشخصي","个人资料","प्रोफ़ाइल"],
+hero_title:["DTM, Milliy sertifikat, IELTS va SAT ga haqiqiy imtihon sharoitida tayyorlaning","Prepare for DTM, national certificates, IELTS and SAT in real exam conditions","Готовьтесь к DTM, национальным сертификатам, IELTS и SAT в условиях настоящего экзамена","Prepárate para DTM, certificados nacionales, IELTS y SAT en condiciones reales de examen","Préparez le DTM, les certificats nationaux, l'IELTS et le SAT en conditions réelles","Prepare-se para DTM, certificados nacionais, IELTS e SAT em condições reais de exame","استعد لاختبارات DTM والشهادات الوطنية وIELTS وSAT في ظروف امتحان حقيقية","在真实考试环境中备考 DTM、国家证书、雅思和 SAT","DTM, राष्ट्रीय प्रमाणपत्र, IELTS और SAT की तैयारी असली परीक्षा जैसे माहौल में करें"],
+hero_lead:["Vaqt cheklovi, savollar navigatsiyasi, belgilash imkoni va test oxirida mavzular bo'yicha tahlil.","A timer, question navigator, review flags and a topic-by-topic analysis when you finish.","Таймер, навигация по вопросам, пометки для проверки и анализ по темам после завершения.","Temporizador, navegador de preguntas, marcas para revisar y análisis por temas al terminar.","Minuteur, navigation entre les questions, marques de relecture et analyse par thème à la fin.","Cronômetro, navegação entre questões, marcação para revisar e análise por tema ao terminar.","مؤقت وتنقل بين الأسئلة وعلامات للمراجعة وتحليل حسب المواضيع عند الانتهاء.","计时器、题目导航、标记复查功能,以及完成后按知识点的分析。","टाइमर, प्रश्न नेविगेशन, दोबारा देखने के निशान और अंत में विषय-वार विश्लेषण।"],
+btn_browse:["Testlarni ko'rish","Browse tests","Смотреть тесты","Ver pruebas","Voir les tests","Ver testes","تصفح الاختبارات","浏览测试","टेस्ट देखें"],
+quick_hint:["Hozir sinab ko'ring: bitta savol, darhol javob","Try it now: one question, instant answer","Попробуйте сейчас: один вопрос, мгновенный ответ","Pruébalo ahora: una pregunta, respuesta inmediata","Essayez : une question, réponse immédiate","Experimente: uma pergunta, resposta imediata","جرّب الآن: سؤال واحد وإجابة فورية","马上试试:一道题,即时反馈","अभी आज़माएँ: एक प्रश्न, तुरंत उत्तर"],
+quick_q:["Massasi 2 kg bo'lgan jism 3 m/s² tezlanish bilan harakatlanmoqda. Unga qanday kuch ta'sir qiladi?","A 2 kg body moves with an acceleration of 3 m/s². What force acts on it?","Тело массой 2 кг движется с ускорением 3 м/с². Какая сила на него действует?","Un cuerpo de 2 kg se mueve con una aceleración de 3 m/s². ¿Qué fuerza actúa sobre él?","Un corps de 2 kg a une accélération de 3 m/s². Quelle force s'exerce sur lui ?","Um corpo de 2 kg move-se com aceleração de 3 m/s². Que força atua sobre ele?","جسم كتلته 2 كغ يتحرك بتسارع 3 م/ث². ما القوة المؤثرة عليه؟","质量为 2 kg 的物体以 3 m/s² 的加速度运动,作用在它上面的力是多少?","2 kg द्रव्यमान की वस्तु 3 m/s² त्वरण से चल रही है। उस पर कितना बल लगता है?"],
+quick_exp:["Nyutonning 2-qonuni: F = m·a = 2·3 = 6 N.","Newton's second law: F = m·a = 2·3 = 6 N.","Второй закон Ньютона: F = m·a = 2·3 = 6 Н.","Segunda ley de Newton: F = m·a = 2·3 = 6 N.","Deuxième loi de Newton : F = m·a = 2·3 = 6 N.","Segunda lei de Newton: F = m·a = 2·3 = 6 N.","قانون نيوتن الثاني: F = m·a = 2·3 = 6 N.","牛顿第二定律:F = m·a = 2·3 = 6 N。","न्यूटन का दूसरा नियम: F = m·a = 2·3 = 6 N।"],
+quick_ok:["To'g'ri.","Correct.","Верно.","Correcto.","Correct.","Correto.","صحيح.","正确。","सही।"],
+quick_no:["Noto'g'ri.","Incorrect.","Неверно.","Incorrecto.","Incorrect.","Incorreto.","خطأ.","错误。","गलत।"],
+quick_retry:["Qayta urinish","Try again","Ещё раз","Reintentar","Réessayer","Tentar de novo","حاول مرة أخرى","再试一次","फिर कोशिश करें"],
+home_exams:["Imtihon yo'nalishlari","Exam tracks","Направления экзаменов","Tipos de examen","Types d'examen","Tipos de exame","مسارات الامتحانات","考试类型","परीक्षा श्रेणियाँ"],
+home_feat:["Boshlash uchun testlar","Tests to start with","Тесты для начала","Pruebas para empezar","Tests pour commencer","Testes para começar","اختبارات للبدء","推荐测试","शुरू करने के लिए टेस्ट"],
+n_tests:["{n} ta test","{n} tests","Тестов: {n}","{n} pruebas","{n} tests","{n} testes","{n} اختبارات","{n} 个测试","{n} टेस्ट"],
+open:["Ochish","Open","Открыть","Abrir","Ouvrir","Abrir","فتح","打开","खोलें"],
+all_exams:["Barcha yo'nalishlar","All exams","Все экзамены","Todos los exámenes","Tous les examens","Todos os exames","كل الامتحانات","全部考试","सभी परीक्षाएँ"],
+all_subjects:["Barcha fanlar","All subjects","Все предметы","Todas las materias","Toutes les matières","Todas as disciplinas","كل المواد","全部科目","सभी विषय"],
+all_langs:["Barcha tillar","All languages","Все языки","Todos los idiomas","Toutes les langues","Todos os idiomas","كل اللغات","全部语言","सभी भाषाएँ"],
+no_tests:["Bu bo'limda hali test yo'q.","No tests here yet.","Здесь пока нет тестов.","Aún no hay pruebas aquí.","Aucun test ici pour l'instant.","Ainda não há testes aqui.","لا توجد اختبارات هنا بعد.","这里还没有测试。","यहाँ अभी कोई टेस्ट नहीं है।"],
+meta_timed:["{s}: {q} savol, {m} daqiqa","{s}: {q} questions, {m} min","{s}: вопросов {q}, {m} мин","{s}: {q} preguntas, {m} min","{s} : {q} questions, {m} min","{s}: {q} questões, {m} min","{s}: {q} أسئلة، {m} دقيقة","{s}:{q} 题,{m} 分钟","{s}: {q} प्रश्न, {m} मिनट"],
+meta_untimed:["{s}: {q} savol, vaqt cheklovsiz","{s}: {q} questions, no time limit","{s}: вопросов {q}, без ограничения времени","{s}: {q} preguntas, sin límite de tiempo","{s} : {q} questions, sans limite de temps","{s}: {q} questões, sem limite de tempo","{s}: {q} أسئلة، بلا حد زمني","{s}:{q} 题,不限时","{s}: {q} प्रश्न, समय सीमा नहीं"],
+best:["Eng yaxshi natija: {n}%","Best result: {n}%","Лучший результат: {n}%","Mejor resultado: {n}%","Meilleur résultat : {n} %","Melhor resultado: {n}%","أفضل نتيجة: {n}%","最佳成绩:{n}%","सर्वश्रेष्ठ परिणाम: {n}%"],
+start:["Boshlash","Start","Начать","Empezar","Commencer","Começar","ابدأ","开始","शुरू करें"],
+need_sub:["Obuna kerak","Subscription required","Нужна подписка","Requiere suscripción","Abonnement requis","Requer assinatura","يتطلب اشتراكًا","需要订阅","सदस्यता आवश्यक"],
+sub_on:["Obuna faol","Subscribed","Подписка активна","Suscrito","Abonné","Assinatura ativa","الاشتراك فعّال","已订阅","सदस्यता सक्रिय"],
+subscribe:["Obuna bo'lish","Subscribe","Подписаться","Suscribirse","S'abonner","Assinar","اشترك","订阅","सदस्यता लें"],
+sub_modal:["Bu test obuna orqali ochiladi. Demo rejimda obunani bir bosishda yoqishingiz mumkin.","This test is unlocked by subscription. In demo mode you can turn it on with one tap.","Этот тест открывается по подписке. В демо-режиме её можно включить одним нажатием.","Esta prueba se desbloquea con suscripción. En modo demo puedes activarla con un toque.","Ce test est accessible par abonnement. En mode démo, vous pouvez l'activer d'un geste.","Este teste é liberado por assinatura. No modo demo você pode ativá-la com um toque.","يُفتح هذا الاختبار بالاشتراك. في وضع العرض التجريبي يمكنك تفعيله بنقرة واحدة.","此测试需订阅解锁。演示模式下可一键开启。","यह टेस्ट सदस्यता से खुलता है। डेमो मोड में आप इसे एक टैप से चालू कर सकते हैं।"],
+sub_go:["Obunani yoqish va boshlash","Subscribe and start","Подписаться и начать","Suscribirse y empezar","S'abonner et commencer","Assinar e começar","اشترك وابدأ","订阅并开始","सदस्यता लें और शुरू करें"],
+close:["Yopish","Close","Закрыть","Cerrar","Fermer","Fechar","إغلاق","关闭","बंद करें"],
+answered:["Javob berilgan: {a}/{n}","Answered: {a}/{n}","Отвечено: {a}/{n}","Respondidas: {a}/{n}","Répondu : {a}/{n}","Respondidas: {a}/{n}","تمت الإجابة: {a}/{n}","已答:{a}/{n}","उत्तर दिए: {a}/{n}"],
+finish:["Yakunlash","Finish","Завершить","Finalizar","Terminer","Finalizar","إنهاء","结束","समाप्त करें"],
+qxofn:["Savol {i} / {n}","Question {i} of {n}","Вопрос {i} из {n}","Pregunta {i} de {n}","Question {i} sur {n}","Questão {i} de {n}","السؤال {i} من {n}","第 {i} / {n} 题","प्रश्न {i} / {n}"],
+flagged_note:["(qayta ko'rish uchun belgilangan)","(marked for review)","(отмечен для проверки)","(marcada para revisar)","(marquée pour relecture)","(marcada para revisar)","(مُعلَّم للمراجعة)","(已标记复查)","(दोबारा देखने के लिए चिह्नित)"],
+prev:["Oldingi","Previous","Назад","Anterior","Précédent","Anterior","السابق","上一题","पिछला"],
+next:["Keyingi","Next","Далее","Siguiente","Suivant","Próxima","التالي","下一题","अगला"],
+flag:["Keyinroq qaytaman","Review later","Вернуться позже","Revisar luego","Revoir plus tard","Revisar depois","مراجعة لاحقًا","稍后复查","बाद में देखूँगा"],
+unflag:["Belgini olib tashlash","Remove mark","Снять отметку","Quitar marca","Retirer la marque","Remover marca","إزالة العلامة","取消标记","निशान हटाएँ"],
+kbd:["Klaviatura: ← → savollar orasida, 1–4 variant tanlash, F belgilash.","Keyboard: ← → to move, 1–4 to choose an option, F to mark.","Клавиши: ← → переход, 1–4 выбор варианта, F отметка.","Teclado: ← → moverse, 1–4 elegir opción, F marcar.","Clavier : ← → naviguer, 1–4 choisir, F marquer.","Teclado: ← → navegar, 1–4 escolher opção, F marcar.","لوحة المفاتيح: ← → للتنقل، 1–4 لاختيار إجابة، F للتعليم.","键盘:← → 切换题目,1–4 选择选项,F 标记。","कीबोर्ड: ← → आगे-पीछे, 1–4 विकल्प चुनें, F निशान लगाएँ।"],
+nav_questions:["Savollar","Questions","Вопросы","Preguntas","Questions","Questões","الأسئلة","题目","प्रश्न"],
+lg_done:["Javob berilgan","Answered","Есть ответ","Respondida","Répondue","Respondida","تمت الإجابة","已作答","उत्तर दिया"],
+lg_todo:["Javob berilmagan","Unanswered","Нет ответа","Sin responder","Sans réponse","Sem resposta","بدون إجابة","未作答","उत्तर नहीं"],
+lg_flag:["Belgilangan","Marked","Отмечен","Marcada","Marquée","Marcada","معلَّمة","已标记","चिह्नित"],
+finish_test:["Testni yakunlash","Finish test","Завершить тест","Finalizar prueba","Terminer le test","Finalizar teste","إنهاء الاختبار","结束测试","टेस्ट समाप्त करें"],
+fin_title:["Testni yakunlaysizmi?","Finish the test?","Завершить тест?","¿Finalizar la prueba?","Terminer le test ?","Finalizar o teste?","هل تريد إنهاء الاختبار؟","要结束测试吗?","क्या टेस्ट समाप्त करें?"],
+fin_unans:["{n} ta savolga javob bermadingiz.","You left {n} questions unanswered.","Без ответа осталось вопросов: {n}.","Dejaste {n} preguntas sin responder.","Vous avez laissé {n} questions sans réponse.","Você deixou {n} questões sem resposta.","تركت {n} أسئلة دون إجابة.","有 {n} 道题未作答。","{n} प्रश्न बिना उत्तर के हैं।"],
+fin_all:["Barcha savollarga javob berdingiz.","You answered every question.","Вы ответили на все вопросы.","Respondiste todas las preguntas.","Vous avez répondu à toutes les questions.","Você respondeu a todas as questões.","أجبت عن جميع الأسئلة.","你已回答所有题目。","आपने सभी प्रश्नों के उत्तर दिए हैं।"],
+fin_flag:["{n} ta savol qayta ko'rish uchun belgilangan.","{n} questions are marked for review.","Отмечено для проверки: {n}.","{n} preguntas marcadas para revisar.","{n} questions marquées pour relecture.","{n} questões marcadas para revisar.","{n} أسئلة معلَّمة للمراجعة.","{n} 道题已标记复查。","{n} प्रश्न दोबारा देखने के लिए चिह्नित हैं।"],
+fin_yes:["Ha, yakunlash","Yes, finish","Да, завершить","Sí, finalizar","Oui, terminer","Sim, finalizar","نعم، أنهِ","是,结束","हाँ, समाप्त करें"],
+fin_back:["Testga qaytish","Back to test","Вернуться к тесту","Volver a la prueba","Retour au test","Voltar ao teste","العودة إلى الاختبار","返回测试","टेस्ट पर लौटें"],
+time_up:["Vaqt tugadi, test avtomatik yakunlandi","Time is up, the test was submitted automatically","Время вышло, тест завершён автоматически","Se acabó el tiempo, la prueba se envió automáticamente","Temps écoulé, le test a été envoyé automatiquement","O tempo acabou, o teste foi enviado automaticamente","انتهى الوقت وتم تسليم الاختبار تلقائيًا","时间到,测试已自动提交","समय समाप्त, टेस्ट अपने आप जमा हो गया"],
+sc_level:["Taxminiy daraja: {v}","Estimated level: {v}","Ориентировочный уровень: {v}","Nivel estimado: {v}","Niveau estimé : {v}","Nível estimado: {v}","المستوى التقريبي: {v}","预估等级:{v}","अनुमानित स्तर: {v}"],
+sc_dtm:["Taxminiy DTM bali: {v} / 189","Estimated DTM score: {v} / 189","Ориентировочный балл DTM: {v} / 189","Puntuación DTM estimada: {v} / 189","Score DTM estimé : {v} / 189","Pontuação DTM estimada: {v} / 189","درجة DTM التقريبية: {v} / 189","预估 DTM 分数:{v} / 189","अनुमानित DTM अंक: {v} / 189"],
+sc_pct:["Natija: {v}%","Score: {v}%","Результат: {v}%","Resultado: {v}%","Résultat : {v} %","Resultado: {v}%","النتيجة: {v}%","得分:{v}%","स्कोर: {v}%"],
+sc_ielts:["Taxminiy IELTS bandi: {v}","Estimated IELTS band: {v}","Ориентировочный балл IELTS: {v}","Banda IELTS estimada: {v}","Band IELTS estimé : {v}","Band IELTS estimado: {v}","نطاق IELTS التقريبي: {v}","预估雅思分数:{v}","अनुमानित IELTS बैंड: {v}"],
+sc_sat:["Taxminiy SAT bo'lim bali: {v} (200–800)","Estimated SAT section score: {v} (200–800)","Ориентировочный балл SAT по разделу: {v} (200–800)","Puntuación SAT de sección estimada: {v} (200–800)","Score SAT de section estimé : {v} (200–800)","Pontuação SAT da seção estimada: {v} (200–800)","درجة قسم SAT التقريبية: {v} (200–800)","预估 SAT 单科分数:{v}(200–800)","अनुमानित SAT सेक्शन स्कोर: {v} (200–800)"],
+no_level:["daraja belgilanmadi","no level","уровень не присвоен","sin nivel","aucun niveau","sem nível","لا يوجد مستوى","未达等级","कोई स्तर नहीं"],
+approx:["Bu taxminiy hisob: rasmiy ballar imtihon qoidalariga qarab farq qilishi mumkin.","This is an estimate: official scores may differ depending on exam rules.","Это оценка: официальные баллы могут отличаться в зависимости от правил экзамена.","Es una estimación: las puntuaciones oficiales pueden variar según las reglas del examen.","Ceci est une estimation : les scores officiels peuvent différer selon les règles de l'examen.","Esta é uma estimativa: as pontuações oficiais podem variar conforme as regras do exame.","هذا تقدير: قد تختلف الدرجات الرسمية حسب قواعد الامتحان.","这是估算值,官方分数可能因考试规则而异。","यह अनुमान है: आधिकारिक अंक परीक्षा के नियमों के अनुसार अलग हो सकते हैं।"],
+spent:["sarflangan vaqt: {t}","time spent: {t}","затрачено времени: {t}","tiempo empleado: {t}","temps passé : {t}","tempo gasto: {t}","الوقت المستغرق: {t}","用时:{t}","लगा समय: {t}"],
+view_ans:["Javoblarni ko'rish","Review answers","Разбор ответов","Ver respuestas","Voir les réponses","Ver respostas","مراجعة الإجابات","查看答案","उत्तर देखें"],
+retry:["Qayta topshirish","Retake","Пройти снова","Repetir","Refaire","Refazer","إعادة المحاولة","重新作答","दोबारा दें"],
+share:["Ulashish","Share","Поделиться","Compartir","Partager","Compartilhar","مشاركة","分享","साझा करें"],
+share_tg:["Telegramda ulashish","Share on Telegram","Поделиться в Telegram","Compartir en Telegram","Partager sur Telegram","Compartilhar no Telegram","مشاركة على تيليجرام","分享到 Telegram","Telegram पर साझा करें"],
+share_text:["{w}\"{x}\" testida {c}/{n} ({p}%){l}. Sen ham sinab ko'r!","{w}I scored {c}/{n} ({p}%){l} on \"{x}\". Try it yourself!","{w}В тесте «{x}» я набрал(а) {c}/{n} ({p}%){l}. Попробуй и ты!","{w}Saqué {c}/{n} ({p}%){l} en «{x}». ¡Inténtalo tú también!","{w}J'ai obtenu {c}/{n} ({p} %){l} au test « {x} ». À toi d'essayer !","{w}Fiz {c}/{n} ({p}%){l} em \"{x}\". Tente você também!","{w}حصلت على {c}/{n} ({p}%){l} في «{x}». جرّب أنت أيضًا!","{w}我在「{x}」中得了 {c}/{n}({p}%){l}。你也来试试!","{w}\"{x}\" में मुझे {c}/{n} ({p}%){l} मिले। आप भी आज़माएँ!"],
+copied:["Matn nusxalandi","Text copied","Текст скопирован","Texto copiado","Texte copié","Texto copiado","تم نسخ النص","已复制文本","टेक्स्ट कॉपी हुआ"],
+topic_an:["Mavzular bo'yicha tahlil","Topic analysis","Анализ по темам","Análisis por temas","Analyse par thème","Análise por tema","التحليل حسب المواضيع","按知识点分析","विषय-वार विश्लेषण"],
+advice_weak:["Avval shu mavzularni takrorlang: {t}.","Review these topics first: {t}.","Сначала повторите темы: {t}.","Repasa primero estos temas: {t}.","Révisez d'abord ces thèmes : {t}.","Revise primeiro estes temas: {t}.","راجع هذه المواضيع أولًا: {t}.","请先复习这些知识点:{t}。","पहले इन विषयों को दोहराएँ: {t}।"],
+advice_none:["Zaif mavzu aniqlanmadi, endi tezlik va diqqat ustida ishlang.","No weak topics found. Now work on speed and attention.","Слабых тем не найдено. Теперь поработайте над скоростью и внимательностью.","No se detectaron temas débiles. Ahora trabaja la velocidad y la atención.","Aucun point faible détecté. Travaillez maintenant la rapidité et l'attention.","Nenhum tema fraco encontrado. Agora trabalhe velocidade e atenção.","لم تظهر مواضيع ضعيفة. اعمل الآن على السرعة والتركيز.","未发现薄弱知识点,现在可以练习速度和专注度。","कोई कमज़ोर विषय नहीं मिला। अब गति और ध्यान पर काम करें।"],
+advice_strong:["Kuchli tomonlaringiz: {t}.","Your strengths: {t}.","Ваши сильные стороны: {t}.","Tus puntos fuertes: {t}.","Vos points forts : {t}.","Seus pontos fortes: {t}.","نقاط قوتك: {t}.","你的强项:{t}。","आपकी ताकत: {t}।"],
+advice_unans:["{n} ta savol javobsiz qoldi, vaqtni taqsimlashni mashq qiling.","{n} questions were left blank. Practice managing your time.","Без ответа осталось вопросов: {n}. Потренируйте распределение времени.","{n} preguntas quedaron en blanco. Practica la gestión del tiempo.","{n} questions sont restées sans réponse. Entraînez-vous à gérer le temps.","{n} questões ficaram em branco. Treine a gestão do tempo.","تُركت {n} أسئلة فارغة. تدرّب على تنظيم الوقت.","有 {n} 题空白,请练习时间分配。","{n} प्रश्न खाली रहे। समय प्रबंधन का अभ्यास करें।"],
+ai_btn:["AI bilan batafsil tahlil","Detailed AI analysis","Подробный анализ с ИИ","Análisis detallado con IA","Analyse détaillée par IA","Análise detalhada com IA","تحليل مفصل بالذكاء الاصطناعي","AI 详细分析","AI से विस्तृत विश्लेषण"],
+ai_loading:["AI tahlil qilmoqda...","AI is analyzing...","ИИ анализирует...","La IA está analizando...","L'IA analyse...","A IA está analisando...","الذكاء الاصطناعي يحلل...","AI 分析中...","AI विश्लेषण कर रहा है..."],
+ai_err:["AI tahlil bu muhitda ishlamadi. Mavzular tahlili esa ishlaydi. Profil sahifasida AI manzilini ulashingiz mumkin.","AI analysis did not work in this environment. The topic analysis still works. You can connect an AI endpoint on the Profile page.","ИИ-анализ здесь не сработал. Анализ по темам работает. Адрес ИИ можно подключить на странице профиля.","El análisis con IA no funcionó en este entorno. El análisis por temas sí funciona. Puedes conectar un endpoint de IA en Perfil.","L'analyse IA n'a pas fonctionné ici. L'analyse par thème fonctionne. Vous pouvez connecter un point d'accès IA dans Profil.","A análise com IA não funcionou neste ambiente. A análise por tema funciona. Você pode conectar um endpoint de IA em Perfil.","لم يعمل تحليل الذكاء الاصطناعي هنا. يعمل التحليل حسب المواضيع. يمكنك ربط عنوان للذكاء الاصطناعي في صفحة الملف الشخصي.","此环境中 AI 分析不可用,知识点分析仍可使用。可在个人资料页连接 AI 接口。","इस माहौल में AI विश्लेषण नहीं चला। विषय-विश्लेषण काम करता है। प्रोफ़ाइल पेज पर AI एंडपॉइंट जोड़ सकते हैं।"],
+rv_title:["{x}: javoblar tahlili","{x}: answer review","{x}: разбор ответов","{x}: revisión de respuestas","{x} : revue des réponses","{x}: revisão das respostas","{x}: مراجعة الإجابات","{x}:答案解析","{x}: उत्तर समीक्षा"],
+rv_meta:["Savol {i}, mavzu: {t}, {s}","Question {i}, topic: {t}, {s}","Вопрос {i}, тема: {t}, {s}","Pregunta {i}, tema: {t}, {s}","Question {i}, thème : {t}, {s}","Questão {i}, tema: {t}, {s}","السؤال {i}، الموضوع: {t}، {s}","第 {i} 题,知识点:{t},{s}","प्रश्न {i}, विषय: {t}, {s}"],
+s_ok:["to'g'ri","correct","верно","correcta","correcte","correta","صحيحة","正确","सही"],
+s_bad:["noto'g'ri","wrong","неверно","incorrecta","incorrecte","incorreta","خاطئة","错误","गलत"],
+s_none:["javob berilmagan","not answered","нет ответа","sin responder","sans réponse","sem resposta","بلا إجابة","未作答","उत्तर नहीं"],
+expl:["Izoh:","Explanation:","Пояснение:","Explicación:","Explication :","Explicação:","الشرح:","解析:","व्याख्या:"],
+back_result:["Natijaga qaytish","Back to result","К результату","Volver al resultado","Retour au résultat","Voltar ao resultado","العودة إلى النتيجة","返回成绩","परिणाम पर लौटें"],
+not_found:["Topilmadi.","Not found.","Не найдено.","No encontrado.","Introuvable.","Não encontrado.","غير موجود.","未找到。","नहीं मिला।"],
+h_empty:["Hali test topshirilmagan.","No tests taken yet.","Вы ещё не проходили тесты.","Aún no has hecho ninguna prueba.","Aucun test passé pour l'instant.","Você ainda não fez nenhum teste.","لم تُجرِ أي اختبار بعد.","还没有完成任何测试。","अभी तक कोई टेस्ट नहीं दिया।"],
+h_count:["topshirilgan test","tests taken","пройдено тестов","pruebas realizadas","tests passés","testes feitos","اختبارات مُنجزة","已完成测试","दिए गए टेस्ट"],
+h_avg:["o'rtacha natija","average score","средний результат","promedio","moyenne","média","المتوسط","平均成绩","औसत स्कोर"],
+h_best:["eng yaxshi natija","best score","лучший результат","mejor resultado","meilleur score","melhor resultado","أفضل نتيجة","最高成绩","सर्वश्रेष्ठ स्कोर"],
+c_date:["Sana","Date","Дата","Fecha","Date","Data","التاريخ","日期","तारीख"],
+c_test:["Test","Test","Тест","Prueba","Test","Teste","الاختبار","测试","टेस्ट"],
+c_result:["Natija","Result","Результат","Resultado","Résultat","Resultado","النتيجة","成绩","परिणाम"],
+c_time:["Vaqt","Time","Время","Tiempo","Durée","Tempo","الوقت","用时","समय"],
+pr_title:["Profil va sozlamalar","Profile and settings","Профиль и настройки","Perfil y ajustes","Profil et réglages","Perfil e configurações","الملف الشخصي والإعدادات","个人资料与设置","प्रोफ़ाइल और सेटिंग"],
+pr_name:["Ismingiz","Your name","Ваше имя","Tu nombre","Votre nom","Seu nome","اسمك","你的名字","आपका नाम"],
+pr_lang:["Til","Language","Язык","Idioma","Langue","Idioma","اللغة","语言","भाषा"],
+pr_login:["Kirish","Sign in","Вход","Iniciar sesión","Connexion","Entrar","تسجيل الدخول","登录","साइन इन"],
+pr_tg:["Telegram orqali kirish","Sign in with Telegram","Войти через Telegram","Iniciar sesión con Telegram","Se connecter avec Telegram","Entrar com Telegram","الدخول عبر تيليجرام","使用 Telegram 登录","Telegram से साइन इन करें"],
+pr_tg_note:["Telegram tugmasi ishlashi uchun bot nomini sozlang (faylning boshidagi CONFIG) va saytni domenga joylang. Xavfsiz kirish uchun Telegram'dan kelgan ma'lumotni serverda tekshirish shart.","To enable the Telegram button, set your bot name (CONFIG at the top of the file) and host the site on a domain. For secure sign-in, the data from Telegram must be verified on a server.","Чтобы кнопка Telegram работала, укажите имя бота (CONFIG в начале файла) и разместите сайт на домене. Для безопасного входа данные от Telegram нужно проверять на сервере.","Para activar el botón de Telegram, define el nombre del bot (CONFIG al inicio del archivo) y publica el sitio en un dominio. Para un acceso seguro, los datos de Telegram deben verificarse en un servidor.","Pour activer le bouton Telegram, indiquez le nom du bot (CONFIG en haut du fichier) et hébergez le site sur un domaine. Pour une connexion sûre, les données de Telegram doivent être vérifiées sur un serveur.","Para ativar o botão do Telegram, defina o nome do bot (CONFIG no início do arquivo) e publique o site em um domínio. Para um login seguro, os dados do Telegram devem ser verificados em um servidor.","لتفعيل زر تيليجرام، حدّد اسم البوت (CONFIG في بداية الملف) وانشر الموقع على نطاق. لتسجيل دخول آمن يجب التحقق من بيانات تيليجرام على الخادم.","要启用 Telegram 按钮,请在文件开头的 CONFIG 中设置机器人名称,并将网站部署到域名。为保证安全,必须在服务器端验证 Telegram 返回的数据。","Telegram बटन चलाने के लिए फ़ाइल के शुरू में CONFIG में बॉट का नाम डालें और साइट को डोमेन पर होस्ट करें। सुरक्षित साइन-इन के लिए Telegram का डेटा सर्वर पर जाँचना ज़रूरी है।"],
+pr_local:["Brauzer orqali akkaunt bilan kirish uchun server kerak. Hozircha profil va natijalar shu qurilmada saqlanadi.","Account sign-in in the browser needs a server. For now, your profile and results are stored on this device.","Для входа с аккаунтом в браузере нужен сервер. Пока профиль и результаты хранятся на этом устройстве.","El inicio de sesión con cuenta en el navegador necesita un servidor. Por ahora el perfil y los resultados se guardan en este dispositivo.","La connexion par compte dans le navigateur nécessite un serveur. Pour l'instant, le profil et les résultats sont stockés sur cet appareil.","O login com conta no navegador precisa de um servidor. Por enquanto, perfil e resultados ficam salvos neste dispositivo.","يتطلب تسجيل الدخول بحساب في المتصفح خادمًا. حاليًا يُحفظ الملف الشخصي والنتائج على هذا الجهاز.","浏览器账号登录需要服务器。目前资料和成绩保存在本设备上。","ब्राउज़र में अकाउंट से साइन-इन के लिए सर्वर चाहिए। अभी प्रोफ़ाइल और परिणाम इसी डिवाइस पर सहेजे जाते हैं।"],
+pr_ai:["AI tahlil manzili (ixtiyoriy)","AI analysis endpoint (optional)","Адрес ИИ-анализа (необязательно)","Endpoint de análisis con IA (opcional)","Point d'accès d'analyse IA (facultatif)","Endpoint de análise com IA (opcional)","عنوان تحليل الذكاء الاصطناعي (اختياري)","AI 分析接口(可选)","AI विश्लेषण एंडपॉइंट (वैकल्पिक)"],
+pr_ai_note:["Bu manzilga POST so'rov yuboriladi: {\"prompt\":\"...\",\"lang\":\"...\"}, javob esa {\"text\":\"...\"} bo'lishi kerak. Serveringiz ichida Claude yoki Gemini chaqirilishi mumkin. API kalitini hech qachon brauzerda saqlamang.","A POST request is sent to this address with {\"prompt\":\"...\",\"lang\":\"...\"} and it must reply with {\"text\":\"...\"}. Your server can call Claude or Gemini. Never keep an API key in the browser.","На этот адрес отправляется POST-запрос {\"prompt\":\"...\",\"lang\":\"...\"}, ответ должен быть {\"text\":\"...\"}. Ваш сервер может вызывать Claude или Gemini. Никогда не храните API-ключ в браузере."],
+pr_subs:["Obunali testlar","Subscription tests","Тесты по подписке","Pruebas con suscripción","Tests sur abonnement","Testes por assinatura","اختبارات الاشتراك","订阅测试","सदस्यता वाले टेस्ट"],
+pr_sub_btn:["Obunani yoqish (demo)","Turn on (demo)","Включить (демо)","Activar (demo)","Activer (démo)","Ativar (demo)","تفعيل (تجريبي)","开启(演示)","चालू करें (डेमो)"],
+pr_none:["Obunali testlar yo'q.","No subscription tests.","Нет тестов по подписке.","No hay pruebas con suscripción.","Aucun test sur abonnement.","Nenhum teste por assinatura.","لا توجد اختبارات اشتراك.","没有订阅测试。","कोई सदस्यता टेस्ट नहीं।"],
+pr_demo:["Bu demo rejim: haqiqiy to'lov uchun serverda to'lovni tasdiqlash kerak.","This is demo mode: real payments need server-side confirmation.","Это демо-режим: для реальной оплаты нужно подтверждение на сервере."],
+pr_data:["Ma'lumotlar","Data","Данные","Datos","Données","Dados","البيانات","数据","डेटा"],
+pr_export:["Zaxira nusxasi","Export backup","Экспорт копии","Exportar copia","Exporter la sauvegarde","Exportar backup","تصدير نسخة احتياطية","导出备份","बैकअप निर्यात"],
+pr_import:["Zaxiradan tiklash","Restore backup","Восстановить из копии","Restaurar copia","Restaurer la sauvegarde","Restaurar backup","استعادة نسخة","恢复备份","बैकअप से बहाल करें"],
+pr_reset:["Hammasini o'chirish","Delete everything","Удалить всё","Borrar todo","Tout supprimer","Apagar tudo","حذف كل شيء","清除全部","सब कुछ हटाएँ"],
+c_reset:["Barcha testlar, natijalar va sozlamalar o'chiriladi. Davom etasizmi?","All tests, results and settings will be deleted. Continue?","Все тесты, результаты и настройки будут удалены. Продолжить?","Se borrarán todas las pruebas, resultados y ajustes. ¿Continuar?","Tous les tests, résultats et réglages seront supprimés. Continuer ?","Todos os testes, resultados e configurações serão apagados. Continuar?","سيتم حذف جميع الاختبارات والنتائج والإعدادات. هل تريد المتابعة؟","所有测试、成绩和设置都将被删除。是否继续?","सभी टेस्ट, परिणाम और सेटिंग हट जाएँगी। जारी रखें?"],
+cf_yes:["Ha","Yes","Да","Sí","Oui","Sim","نعم","是","हाँ"],
+cf_no:["Yo'q","No","Нет","No","Non","Não","لا","否","नहीं"],
+t_subon:["Obuna yoqildi (demo)","Subscription turned on (demo)","Подписка включена (демо)","Suscripción activada (demo)","Abonnement activé (démo)","Assinatura ativada (demo)","تم تفعيل الاشتراك (تجريبي)","订阅已开启(演示)","सदस्यता चालू (डेमो)"],
+t_noqs:["Bu testda savollar yo'q","This test has no questions","В этом тесте нет вопросов","Esta prueba no tiene preguntas","Ce test n'a pas de questions","Este teste não tem questões","لا توجد أسئلة في هذا الاختبار","此测试没有题目","इस टेस्ट में प्रश्न नहीं हैं"],
+t_restored:["Zaxira tiklandi","Backup restored","Копия восстановлена","Copia restaurada","Sauvegarde restaurée","Backup restaurado","تمت استعادة النسخة","备份已恢复","बैकअप बहाल हुआ"],
+t_badfile:["Fayl formati noto'g'ri","Invalid file format","Неверный формат файла","Formato de archivo no válido","Format de fichier invalide","Formato de arquivo inválido","تنسيق الملف غير صالح","文件格式无效","फ़ाइल प्रारूप गलत है"],
+t_reset:["Boshlang'ich holatga qaytarildi","Reset to defaults","Сброшено к исходному состоянию","Restablecido","Réinitialisé","Restaurado ao padrão","تمت إعادة الضبط","已恢复默认","डिफ़ॉल्ट पर लौटा"],
+nm_ms:["Milliy sertifikat","National certificate","Национальный сертификат","Certificado nacional","Certificat national","Certificado nacional","الشهادة الوطنية","国家证书","राष्ट्रीय प्रमाणपत्र"],
+nm_att:["Attestatsiya","Teacher attestation","Аттестация","Atestación docente","Attestation","Atestação","التصديق المهني","教师资格评定","अटेस्टेशन"],
+/* Muharrir (uz, en, ru; boshqa tillarda inglizcha) */
+ed_title:["Muharrir","Editor","Редактор"],
+ed_note:["Yo'nalish, fan va testlarni qo'shing, tahrirlang yoki o'chiring. Ma'lumotlar shu brauzerda saqlanadi; ommaviy saytda faqat siz tahrirlashingiz uchun serverda kirish tizimi kerak.","Add, edit or delete exam tracks, subjects and tests. Data is stored in this browser; on a public site you need server-side sign-in so only you can edit.","Добавляйте, редактируйте и удаляйте направления, предметы и тесты. Данные хранятся в этом браузере; на публичном сайте для редактирования нужен вход через сервер."],
+ed_examsh:["Imtihon yo'nalishlari","Exam tracks","Направления экзаменов"],
+ed_examname:["Yo'nalish nomi (masalan: TOEFL, Attestatsiya)","Track name (e.g. TOEFL, Teacher attestation)","Название направления (например: TOEFL, Аттестация)"],
+ed_scoring:["Ball hisoblash usuli","Scoring method","Способ подсчёта баллов"],
+ed_sc_level:["Daraja (A+ ... C)","Level (A+ ... C)","Уровень (A+ ... C)"],
+ed_sc_dtm:["DTM bali (189 gacha)","DTM score (up to 189)","Балл DTM (до 189)"],
+ed_sc_percent:["Foiz","Percent","Проценты"],
+ed_sc_ielts:["IELTS band (1–9)","IELTS band (1–9)","IELTS band (1–9)"],
+ed_sc_sat:["SAT bo'lim bali (200–800)","SAT section score (200–800)","Балл SAT по разделу (200–800)"],
+ed_addexam:["Yo'nalish qo'shish","Add track","Добавить направление"],
+ed_new:["Yangi test","New test","Новый тест"],
+ed_edit:["Testni tahrirlash","Edit test","Редактирование теста"],
+ed_name:["Test nomi (masalan: Fizika 2, Geografiya 1)","Test name (e.g. Physics 2, Geography 1)","Название теста (например: Физика 2, География 1)"],
+ed_subject:["Fan","Subject","Предмет"],
+ed_exam:["Imtihon yo'nalishi","Exam track","Направление экзамена"],
+ed_dur:["Vaqt (daqiqa, 0 = cheklovsiz)","Time (minutes, 0 = no limit)","Время (минуты, 0 = без ограничения)"],
+ed_lang:["Test savollari tili","Language of the questions","Язык вопросов"],
+ed_sub:["Bu testga obuna kerak","This test requires a subscription","Для теста нужна подписка"],
+ed_shuffle:["Variantlar tartibini aralashtirish","Shuffle answer options","Перемешивать варианты ответов"],
+ed_qh:["Savol qo'shish ({n} ta qo'shilgan)","Add a question ({n} added)","Добавить вопрос (добавлено: {n})"],
+ed_qtext:["Savol matni","Question text","Текст вопроса"],
+ed_opts:["Variantlar (to'g'ri javobni belgilang)","Options (mark the correct one)","Варианты (отметьте верный)"],
+ed_topic:["Mavzu (tahlil uchun)","Topic (for analysis)","Тема (для анализа)"],
+ed_exp:["Izoh (ixtiyoriy)","Explanation (optional)","Пояснение (необязательно)"],
+ed_addq:["Savolni qo'shish","Add question","Добавить вопрос"],
+ed_list:["Qo'shilgan savollar","Questions added","Добавленные вопросы"],
+ed_del:["O'chirish","Delete","Удалить"],
+ed_bulkh:["Ko'p savolni birdan kiritish","Add many questions at once","Добавить много вопросов сразу"],
+ed_bulknote:["Savollar orasida bo'sh qator qoldiring. Format:<br>Savol matni?<br>A) variant<br>B) variant<br>C) variant<br>D) variant<br>Javob: B<br>Mavzu: Kinematika<br>Izoh: qisqa tushuntirish","Leave a blank line between questions. Format:<br>Question text?<br>A) option<br>B) option<br>C) option<br>D) option<br>Answer: B<br>Topic: Kinematics<br>Explanation: short note","Между вопросами оставляйте пустую строку. Формат:<br>Текст вопроса?<br>A) вариант<br>B) вариант<br>C) вариант<br>D) вариант<br>Ответ: B<br>Тема: Кинематика<br>Пояснение: коротко"],
+ed_bulkbtn:["Matndan savollarni qo'shish","Add questions from text","Добавить вопросы из текста"],
+ed_save:["Testni saqlash","Save test","Сохранить тест"],
+ed_savechg:["O'zgarishlarni saqlash","Save changes","Сохранить изменения"],
+ed_cancel:["Bekor qilish","Cancel","Отмена"],
+ed_existing:["Mavjud testlar","Existing tests","Существующие тесты"],
+ed_edit_btn:["Tahrirlash","Edit","Изменить"],
+t_fill:["Savol va to'rtta variantni to'ldiring","Fill in the question and all four options","Заполните вопрос и все четыре варианта"],
+t_added:["Savol qo'shildi","Question added","Вопрос добавлен"],
+t_noname:["Test nomini kiriting","Enter a test name","Введите название теста"],
+t_noq:["Kamida bitta savol qo'shing","Add at least one question","Добавьте хотя бы один вопрос"],
+t_saved:["Saqlandi","Saved","Сохранено"],
+t_badfmt:["Format bo'yicha savol topilmadi. Namunani tekshiring","No questions found in that format. Check the sample","Вопросы в этом формате не найдены. Проверьте образец"],
+t_bulk:["{n} ta savol qo'shildi","{n} questions added","Добавлено вопросов: {n}"],
+t_inuse:["Bu yo'nalishda testlar bor. Avval ularni o'chiring yoki boshqa yo'nalishga o'tkazing","This track still has tests. Delete or move them first","В этом направлении есть тесты. Сначала удалите или перенесите их"],
+t_exname:["Yo'nalish nomini kiriting","Enter a track name","Введите название направления"],
+c_deltest:["Bu testni o'chirasizmi?","Delete this test?","Удалить этот тест?"],
+c_delexam:["Bu yo'nalishni o'chirasizmi?","Delete this track?","Удалить это направление?"],
+nav_import:["Kitobdan test","Test from a book","Тест из книги"],
+im_title:["Kitobdan test yaratish","Create tests from a book","Создание тестов из книги"],
+im_note:["Kitob (PDF, DOCX, TXT) yoki matnni yuklang: sayt undagi savollarni topadi yoki AI yordamida yangilarini yaratadi. Natijani siz ko'rib chiqib tasdiqlaysiz, shubhali joylar belgilanadi.","Upload a book (PDF, DOCX, TXT) or paste text: the site finds the questions in it or creates new ones with AI. You review and approve the result; doubtful items are flagged.","Загрузите книгу (PDF, DOCX, TXT) или вставьте текст: сайт найдёт в ней вопросы или создаст новые с помощью ИИ. Результат вы проверяете и утверждаете, сомнительные места помечаются."],
+im_copyright:["Faqat o'zingizga tegishli yoki ochiq litsenziyali materiallardan foydalaning. Nashr etilgan kitoblarni ruxsatsiz ommaga joylash mualliflik huquqini buzishi mumkin.","Use only material you own or that has an open licence. Publishing a book's questions publicly without permission may infringe copyright.","Используйте только свои материалы или материалы с открытой лицензией. Публикация вопросов из книг без разрешения может нарушать авторские права."],
+im_file:["Fayl (PDF, DOCX, TXT)","File (PDF, DOCX, TXT)","Файл (PDF, DOCX, TXT)"],
+im_paste:["Yoki matnni shu yerga qo'ying","Or paste text here","Или вставьте текст сюда"],
+im_reading:["Fayl o'qilmoqda...","Reading the file...","Файл читается..."],
+im_readerr:["Faylni o'qib bo'lmadi","Could not read the file","Не удалось прочитать файл"],
+im_loaded:["{name}: {p} bet, {c} belgi o'qildi","{name}: read {p} pages, {c} characters","{name}: прочитано страниц {p}, символов {c}"],
+im_scanned:["Bu PDF skanerlangan (rasm) ko'rinadi, matn topilmadi. Uni menga chatda yuboring, men o'qib beraman.","This PDF looks scanned (images only), no text was found. Send it to me in the chat and I will read it for you.","Похоже, этот PDF отсканирован (только изображения), текст не найден. Отправьте его мне в чате, и я прочитаю."],
+im_from:["Betdan","From page","С страницы"],
+im_to:["Betgacha","To page","По страницу"],
+im_mode:["Usul","Method","Способ"],
+im_m_parse:["Tayyor savollarni topish (AI shart emas)","Find existing questions (no AI needed)","Найти готовые вопросы (ИИ не нужен)"],
+im_m_extract:["AI bilan tayyor savollarni tuzatib olish","Extract existing questions with AI","Извлечь готовые вопросы с помощью ИИ"],
+im_m_gen:["AI bilan yangi savollar yaratish","Create new questions with AI","Создать новые вопросы с помощью ИИ"],
+im_style:["Uslub","Style","Стиль"],
+im_s_ms:["Milliy sertifikat uslubi","National certificate style","Стиль национального сертификата"],
+im_s_ielts:["IELTS Reading uslubi","IELTS Reading style","Стиль IELTS Reading"],
+im_s_gen:["Oddiy test","General quiz","Обычный тест"],
+im_count:["Nechta savol yaratilsin","How many questions to create","Сколько вопросов создать"],
+im_run:["Savollarni tayyorlash","Prepare questions","Подготовить вопросы"],
+im_running:["Ishlayapti...","Working...","Работаю..."],
+im_none:["Savol topilmadi. Boshqa usulni sinab ko'ring yoki matnni tekshiring.","No questions found. Try another method or check the text.","Вопросы не найдены. Попробуйте другой способ или проверьте текст."],
+im_many:["Tanlangan qism juda katta. Betlar oralig'ini toraytiring.","The selected part is too large. Narrow the page range.","Выбранная часть слишком велика. Сузьте диапазон страниц."],
+im_ai_err:["AI ishlamadi. Profil sahifasida AI manzilini ulang yoki \"Tayyor savollarni topish\" usulini ishlating.","AI did not respond. Connect an AI endpoint on the Profile page or use the \"Find existing questions\" method.","ИИ не ответил. Подключите адрес ИИ в профиле или используйте способ «Найти готовые вопросы»."],
+im_key:["Javoblar kaliti (ixtiyoriy), masalan: 1-B 2-C 3-A","Answer key (optional), e.g. 1-B 2-C 3-A","Ключ ответов (необязательно), например: 1-B 2-C 3-A"],
+im_applykey:["Kalitni qo'llash","Apply key","Применить ключ"],
+im_keyapplied:["Kalit {n} ta savolga qo'llandi","Key applied to {n} questions","Ключ применён к вопросам: {n}"],
+im_review:["Tekshiruv: {n} ta savol, {f} tasi e'tibor talab qiladi","Review: {n} questions, {f} need attention","Проверка: вопросов {n}, требуют внимания {f}"],
+im_consult:["Belgilangan joylarni o'zingiz tekshiring yoki menga chatda yuboring, birga ko'rib chiqamiz.","Check the flagged items yourself or send them to me in the chat and we will go through them together.","Проверьте помеченные места сами или отправьте мне в чат, разберём вместе."],
+im_only_flag:["Faqat tekshirish kerak bo'lganlar","Only items needing attention","Только требующие внимания"],
+im_include:["Qo'shish","Include","Включить"],
+im_passage:["Matn (passage)","Passage","Текст (passage)"],
+fl_noans:["Javob belgilanmagan","No correct answer set","Не выбран верный ответ"],
+fl_opts:["Variantlar yetarli emas","Options incomplete","Варианты неполные"],
+fl_short:["Savol juda qisqa","Question too short","Вопрос слишком короткий"],
+fl_dup:["Takrorlangan savol","Possible duplicate","Возможный дубликат"],
+fl_low:["AI ishonchi past","AI is unsure","ИИ не уверен"],
+im_recheck:["Qayta tekshirish","Re-check","Проверить снова"],
+im_dest:["Saqlash","Save","Сохранение"],
+im_tname:["Test nomi (masalan: Fizika 3)","Test name (e.g. Physics 3)","Название теста (например: Физика 3)"],
+im_per:["Har bir testda savollar soni (0 = hammasi bitta testda)","Questions per test (0 = all in one test)","Вопросов в тесте (0 = все в одном)"],
+im_save:["Testlarni saqlash","Save tests","Сохранить тесты"],
+im_saved:["{n} ta test saqlandi. Ularni \"Testlar\" bo'limida ko'rasiz.","{n} tests saved. You will find them under \"Tests\".","Сохранено тестов: {n}. Они в разделе «Тесты»."],
+im_nosel:["Saqlash uchun javobi belgilangan kamida bitta savol kerak","At least one question with a correct answer is needed","Нужен хотя бы один вопрос с отмеченным ответом"],
+im_clear:["Tozalash","Clear","Очистить"]
+};
+const SUBJ = {
+"Fizika":["Fizika","Physics","Физика","Física","Physique","Física","الفيزياء","物理","भौतिकी"],
+"Matematika":["Matematika","Mathematics","Математика","Matemáticas","Mathématiques","Matemática","الرياضيات","数学","गणित"],
+"Ingliz tili":["Ingliz tili","English","Английский язык","Inglés","Anglais","Inglês","اللغة الإنجليزية","英语","अंग्रेज़ी"],
+"Tarix":["Tarix","History","История","Historia","Histoire","História","التاريخ","历史","इतिहास"],
+"Kimyo":["Kimyo","Chemistry","Химия","Química","Chimie","Química","الكيمياء","化学","रसायन विज्ञान"],
+"Geografiya":["Geografiya","Geography","География","Geografía","Géographie","Geografia","الجغرافيا","地理","भूगोल"],
+"Biologiya":["Biologiya","Biology","Биология","Biología","Biologie","Biologia","الأحياء","生物","जीव विज्ञान"],
+"Ona tili":["Ona tili","Native language","Родной язык","Lengua materna","Langue maternelle","Língua materna","اللغة الأم","母语","मातृभाषा"]
+};
+
+/* ================= Saqlash ================= */
+const KEY = "sinov_v2";
+let memStore = null;
+function loadStore(){
+  try { const r = localStorage.getItem(KEY) || localStorage.getItem("sinov_platforma_v1"); if (r) return JSON.parse(r); } catch(e){}
+  return memStore ? JSON.parse(memStore) : null;
+}
+function save(){
+  const s = JSON.stringify(S);
+  try { localStorage.setItem(KEY, s); } catch(e){ memStore = s; }
+}
+
+/* ================= Boshlang'ich ma'lumotlar ================= */
+function defaultExams(){
+  return [
+    {id:"dtm",name:"DTM",scoring:"dtm"},
+    {id:"ms",nameKey:"nm_ms",scoring:"level"},
+    {id:"att",nameKey:"nm_att",scoring:"percent"},
+    {id:"ielts",name:"IELTS",scoring:"ielts"},
+    {id:"sat",name:"SAT",scoring:"sat"}
+  ];
+}
+function seed(){
+  const Q = (q,o,a,topic,exp)=>({q,o,a,topic,exp});
+  return [
+    {id:"fiz-dtm-1",title:"Fizika 1",subject:"Fizika",exam:"dtm",lang:"uz",duration:20,premium:false,shuffle:true,questions:[
+      Q("Jism 5 m/s tezlik bilan tekis harakatlanib, 12 s da qancha masofa bosadi?",["17 m","60 m","2,4 m","30 m"],1,"Kinematika","Tekis harakatda s = v·t = 5·12 = 60 m."),
+      Q("Jism tinch holatdan 2 m/s² tezlanish bilan harakatlanmoqda. 5 s dan keyin uning tezligi qancha?",["5 m/s","7 m/s","10 m/s","25 m/s"],2,"Kinematika","v = a·t = 2·5 = 10 m/s."),
+      Q("Massasi 4 kg bo'lgan jismga 12 N kuch ta'sir qilmoqda. Tezlanishi qancha?",["48 m/s²","3 m/s²","8 m/s²","0,33 m/s²"],1,"Dinamika","Nyutonning 2-qonuni: a = F/m = 12/4 = 3 m/s²."),
+      Q("Massasi 2 kg bo'lgan jism 10 m/s tezlik bilan harakatlanmoqda. Kinetik energiyasi qancha?",["20 J","50 J","100 J","200 J"],2,"Energiya","E = mv²/2 = 2·100/2 = 100 J."),
+      Q("Massasi 3 kg bo'lgan jism 5 m balandlikka ko'tarildi (g = 10 m/s²). Potensial energiyasi qancha?",["15 J","150 J","30 J","50 J"],1,"Energiya","E = mgh = 3·10·5 = 150 J."),
+      Q("Qarshiligi 10 Ω bo'lgan o'tkazgichdan 2 A tok o'tmoqda. Kuchlanish qancha?",["5 V","12 V","20 V","0,2 V"],2,"Elektr","Om qonuni: U = I·R = 2·10 = 20 V."),
+      Q("4 Ω va 6 Ω qarshiliklar ketma-ket ulangan. Umumiy qarshilik qancha?",["2,4 Ω","10 Ω","24 Ω","5 Ω"],1,"Elektr","Ketma-ket ulanishda R = R₁ + R₂ = 10 Ω."),
+      Q("Yorug'likning vakuumdagi tezligi taxminan qancha?",["3·10⁶ m/s","3·10⁸ m/s","3·10⁴ m/s","3·10¹⁰ m/s"],1,"Optika","c ≈ 3·10⁸ m/s."),
+      Q("Gaz doimiy temperaturada siqilsa, uning bosimi qanday o'zgaradi?",["Ortadi","Kamayadi","O'zgarmaydi","Avval ortadi, keyin kamayadi"],0,"Molekulyar fizika","Boyl–Mariott qonuni: pV = const, hajm kamaysa bosim ortadi."),
+      Q("Chastotasi 50 Hz bo'lgan tebranishning davri qancha?",["0,5 s","0,02 s","50 s","0,2 s"],1,"Tebranishlar","T = 1/ν = 1/50 = 0,02 s.")
+    ]},
+    {id:"fiz-dtm-2",title:"Fizika 2",subject:"Fizika",exam:"dtm",lang:"uz",duration:10,premium:false,shuffle:true,questions:[
+      Q("Bosim formulasi qaysi?",["p = F·S","p = F/S","p = S/F","p = F + S"],1,"Bosim","Bosim kuchning yuzaga nisbatiga teng: p = F/S."),
+      Q("Arximed kuchi nimalarga bog'liq?",["Suyuqlik zichligi va jismning botgan hajmiga","Faqat jism massasiga","Faqat idish shakliga","Jism rangiga"],0,"Bosim","F = ρ·g·V."),
+      Q("Ideal gazning holat tenglamasi qaysi?",["pV = νRT","p = νRT·V","V = pνRT","pT = νRV"],0,"Molekulyar fizika","Mendeleyev–Klapeyron tenglamasi: pV = νRT."),
+      Q("Jism 20 m/s tezlik bilan vertikal yuqoriga otildi (g = 10 m/s²). Eng yuqori nuqtaga necha sekundda ko'tariladi?",["1 s","2 s","4 s","20 s"],1,"Kinematika","t = v/g = 20/10 = 2 s."),
+      Q("Tovushning havodagi tezligi taxminan qancha?",["34 m/s","340 m/s","3400 m/s","3·10⁸ m/s"],1,"Tebranishlar","Havoda tovush tezligi taxminan 340 m/s.")
+    ]},
+    {id:"fiz-ms-1",title:"Fizika: sertifikat 1",subject:"Fizika",exam:"ms",lang:"uz",duration:12,premium:true,shuffle:true,questions:[
+      Q("1 kVt·soat necha joulga teng?",["3,6·10³ J","3,6·10⁶ J","3,6·10⁹ J","1000 J"],1,"Energiya","1 kVt·soat = 1000 W·3600 s = 3,6·10⁶ J."),
+      Q("Nyutonning 3-qonuniga ko'ra ta'sir va aks ta'sir kuchlari...",["Modul jihatdan teng, yo'nalishi qarama-qarshi","Modul jihatdan teng, yo'nalishi bir xil","Modul jihatdan farq qiladi","Bir jismga qo'yilgan bo'ladi"],0,"Dinamika","Kuchlar har xil jismlarga qo'yilgan, modul jihatdan teng, yo'nalishi qarama-qarshi."),
+      Q("Zichligi 800 kg/m³ bo'lgan suyuqlikning 0,5 m³ hajmdagi massasi qancha?",["400 kg","1600 kg","160 kg","40 kg"],0,"Dinamika","m = ρ·V = 800·0,5 = 400 kg."),
+      Q("Erkin tushish tezlanishi Yer sirtida taxminan qancha?",["1,6 m/s²","9,8 m/s²","98 m/s²","3,7 m/s²"],1,"Kinematika","g ≈ 9,8 m/s²."),
+      Q("Fokus masofasi 0,5 m bo'lgan linzaning optik kuchi qancha?",["0,5 dptr","2 dptr","5 dptr","0,2 dptr"],1,"Optika","D = 1/F = 1/0,5 = 2 dptr."),
+      Q("600 J ish 20 s da bajarildi. Quvvat qancha?",["30 W","12000 W","580 W","3 W"],0,"Energiya","N = A/t = 600/20 = 30 W.")
+    ]},
+    {id:"mat-dtm-1",title:"Matematika 1",subject:"Matematika",exam:"dtm",lang:"uz",duration:15,premium:false,shuffle:true,questions:[
+      Q("2x + 6 = 18 tenglamani yeching.",["x = 4","x = 6","x = 8","x = 12"],1,"Algebra","2x = 12, x = 6."),
+      Q("x² − 5x + 6 = 0 tenglamaning ildizlari:",["1 va 6","2 va 3","−2 va −3","5 va 1"],1,"Algebra","Viyet teoremasi: yig'indi 5, ko'paytma 6, demak 2 va 3."),
+      Q("Radiusi 7 bo'lgan doiraning yuzi (π = 22/7):",["44","154","22","49"],1,"Geometriya","S = πr² = (22/7)·49 = 154."),
+      Q("240 ning 25 foizi nechaga teng?",["50","60","80","24"],1,"Foiz","240·0,25 = 60."),
+      Q("Arifmetik progressiyada a₁ = 3, d = 4. a₅ nechaga teng?",["15","19","23","17"],1,"Progressiya","a₅ = a₁ + 4d = 3 + 16 = 19."),
+      Q("sin 30° nechaga teng?",["√3/2","1/2","1","√2/2"],1,"Trigonometriya","sin 30° = 1/2."),
+      Q("log₂ 32 nechaga teng?",["4","5","6","16"],1,"Logarifm","2⁵ = 32, demak 5."),
+      Q("Katetlari 6 va 8 bo'lgan to'g'ri burchakli uchburchakning gipotenuzasi:",["9","10","12","14"],1,"Geometriya","Pifagor teoremasi: √(36+64) = 10.")
+    ]},
+    {id:"geo-dtm-1",title:"Geografiya 1",subject:"Geografiya",exam:"dtm",lang:"uz",duration:8,premium:false,shuffle:true,questions:[
+      Q("Yer yuzidagi eng katta okean qaysi?",["Atlantika","Hind","Tinch","Shimoliy Muz"],2,"Okeanlar","Tinch okean eng katta okeandir."),
+      Q("Orol dengizi qaysi ikki davlat hududida joylashgan?",["O'zbekiston va Qozog'iston","O'zbekiston va Turkmaniston","Qozog'iston va Qirg'iziston","Tojikiston va Afg'oniston"],0,"O'rta Osiyo","Orol dengizi O'zbekiston va Qozog'iston hududida joylashgan."),
+      Q("Dunyodagi eng baland tog' cho'qqisi qaysi?",["Elbrus","Everest (Jomolungma)","Monblan","Kilimanjaro"],1,"Relyef","Everest (Jomolungma) dengiz sathidan eng baland cho'qqi."),
+      Q("Amudaryo qadimdan qaysi dengizga quyilgan?",["Kaspiy","Qora","Orol","O'rta yer"],2,"O'rta Osiyo","Amudaryo Orol dengiziga quyilgan."),
+      Q("Sahroi Kabir qaysi qit'ada joylashgan?",["Osiyo","Afrika","Avstraliya","Janubiy Amerika"],1,"Qit'alar","Sahroi Kabir Afrikada joylashgan.")
+    ]},
+    {id:"eng-ms-1",title:"Ingliz tili: sertifikat 1",subject:"Ingliz tili",exam:"ms",lang:"en",duration:10,premium:false,shuffle:true,questions:[
+      Q("If I ___ more time, I would travel the world.",["have","had","would have","having"],1,"Grammar","Second conditional: If + past simple, would + verb."),
+      Q("She has lived in this city ___ 2015.",["for","since","from","during"],1,"Grammar","'Since' is used with a specific starting point."),
+      Q("Choose the word closest in meaning to 'enormous'.",["tiny","huge","ordinary","fragile"],1,"Vocabulary","Enormous = huge."),
+      Q("He suggested ___ to the cinema.",["to go","going","go","went"],1,"Grammar","'Suggest' is followed by a gerund."),
+      Q("I look forward to ___ you next week.",["see","seeing","saw","be seeing"],1,"Grammar","'Look forward to' is followed by a gerund."),
+      Q("By the time we arrived, the film ___.",["already started","had already started","has already started","was already starting"],1,"Grammar","Past perfect for an earlier completed action."),
+      Q("Choose the opposite of 'scarce'.",["rare","abundant","limited","poor"],1,"Vocabulary","The antonym of scarce is abundant."),
+      Q("Neither of the students ___ the answer.",["know","knows","are knowing","have known"],1,"Grammar","'Neither of' is normally followed by a singular verb.")
+    ]},
+    {id:"ielts-demo-1",title:"IELTS Grammar & Vocabulary demo",subject:"Ingliz tili",exam:"ielts",lang:"en",duration:8,premium:false,shuffle:true,questions:[
+      Q("Despite ___ hard, he failed the exam.",["study","studying","to study","studied"],1,"Grammar","'Despite' is followed by a noun or gerund."),
+      Q("What does 'mitigate' mean?",["make less severe","make larger","ignore","repeat"],0,"Vocabulary","To mitigate is to make something less severe."),
+      Q("The report, ___ was published last week, caused debate.",["who","which","whose","what"],1,"Grammar","'Which' introduces a non-defining clause about a thing."),
+      Q("She is accustomed ___ early.",["to get up","to getting up","getting up","get up"],1,"Grammar","'Be accustomed to' is followed by a gerund."),
+      Q("Choose the synonym of 'ubiquitous'.",["rare","found everywhere","dangerous","ancient"],1,"Vocabulary","Ubiquitous means present everywhere.")
+    ]},
+    {id:"sat-demo-1",title:"SAT Math demo",subject:"Matematika",exam:"sat",lang:"en",duration:6,premium:false,shuffle:true,questions:[
+      Q("If 3x + 7 = 22, what is the value of x?",["3","5","7","15"],1,"Algebra","3x = 15, so x = 5."),
+      Q("What is the slope of the line through (1, 2) and (3, 6)?",["1","2","3","4"],1,"Linear functions","Slope = (6 − 2)/(3 − 1) = 2."),
+      Q("If f(x) = 2x² − 3, what is f(4)?",["13","29","32","61"],1,"Functions","f(4) = 2·16 − 3 = 29."),
+      Q("What is 15% of 80?",["8","10","12","15"],2,"Percentages","0.15 · 80 = 12.")
+    ]},
+    {id:"tar-dtm-1",title:"Tarix 1",subject:"Tarix",exam:"dtm",lang:"uz",duration:8,premium:false,shuffle:true,questions:[
+      Q("Amir Temur qaysi yilda tug'ilgan?",["1326","1336","1346","1405"],1,"O'rta asrlar","Amir Temur 1336-yilda Kesh (Shahrisabz) yaqinida tug'ilgan."),
+      Q("Mirzo Ulug'bek rasadxonasi qaysi shaharda qurilgan?",["Buxoro","Samarqand","Xiva","Toshkent"],1,"O'rta asrlar","Ulug'bek rasadxonasi Samarqandda qurilgan."),
+      Q("Al-Xorazmiy qaysi fanning asoschilaridan biri hisoblanadi?",["Algebra","Kimyo","Geografiya","Tibbiyot"],0,"Fan va madaniyat","Al-Xorazmiy algebra fanining asoschisi hisoblanadi."),
+      Q("O'zbekiston Respublikasi mustaqilligi qachon e'lon qilingan?",["1990-yil 20-iyun","1991-yil 31-avgust","1991-yil 8-dekabr","1992-yil 8-dekabr"],1,"Yangi tarix","Mustaqillik 1991-yil 31-avgustda e'lon qilingan."),
+      Q("Buyuk Ipak yo'li qaysi mintaqalarni bog'lagan?",["Xitoy va O'rta yer dengizi","Hindiston va Braziliya","Rossiya va Afrika","Yaponiya va Amerika"],0,"Qadimgi davr","Ipak yo'li Sharqiy Osiyoni O'rta yer dengizi mintaqasi bilan bog'lagan.")
+    ]},
+    {id:"kim-ms-1",title:"Kimyo: sertifikat 1",subject:"Kimyo",exam:"ms",lang:"uz",duration:6,premium:true,shuffle:true,questions:[
+      Q("Tartib raqami 8 bo'lgan element qaysi?",["Azot","Kislorod","Uglerod","Neon"],1,"Davriy jadval","8-element: kislorod (O)."),
+      Q("pH = 7 bo'lgan muhit qanday?",["Kislotali","Neytral","Ishqoriy","Tuzli"],1,"Eritmalar","pH = 7 neytral muhit."),
+      Q("Eng yengil gaz qaysi?",["Geliy","Vodorod","Azot","Kislorod"],1,"Davriy jadval","Vodorod eng yengil gaz."),
+      Q("H₂SO₄ ning nomi nima?",["Xlorid kislota","Nitrat kislota","Sulfat kislota","Fosfat kislota"],2,"Anorganik kimyo","H₂SO₄ sulfat kislota."),
+      Q("CO₂ ning molyar massasi qancha (C = 12, O = 16)?",["28 g/mol","32 g/mol","44 g/mol","56 g/mol"],2,"Hisoblashlar","12 + 2·16 = 44 g/mol.")
+    ]}
+  ];
+}
+const QUICK_OPTS = ["1,5 N","5 N","6 N","0,67 N"], QUICK_A = 2;
+
+/* ================= Holat ================= */
+let S = loadStore();
+function normalize(){
+  const fresh = !S || !Array.isArray(S.tests);
+  if (fresh) S = {lang:null, exams:defaultExams(), tests:seed(), attempts:[], profile:{name:"",tg:"",aiUrl:""}, unlocked:[]};
+  if (!S.profile) S.profile = {name:"",tg:"",aiUrl:""};
+  if (!S.unlocked) S.unlocked = [];
+  if (!S.attempts) S.attempts = [];
+  if (!S.exams){
+    S.exams = defaultExams();
+    const have = new Set(S.tests.map(x=>x.id));
+    seed().forEach(x=>{ if(!have.has(x.id)) S.tests.push(x); });
+  }
+  S.tests.forEach(x=>{
+    if (!x.exam){ const f=S.exams.find(e=>e.name===x.type||e.id===x.type||(x.type==="Milliy sertifikat"&&e.id==="ms")); x.exam=f?f.id:S.exams[0].id; }
+    if (!x.lang) x.lang="uz";
+  });
+  if (!("lang" in S)) S.lang = null;
+  if (!("owner" in S)) S.owner = false;
+}
+normalize();
+const U = {view:"home", fExam:"all", fSub:"all", fLang:"all", ex:null, resultId:null, modal:null, quick:null, ai:null, draft:null, xd:{name:"",scoring:"percent"}, tm:null, pending:null};
+
+/* ================= Yordamchilar ================= */
+const $app = document.getElementById("app");
+const esc = s => String(s==null?"":s).replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const uid = () => Math.random().toString(36).slice(2,9)+Date.now().toString(36).slice(-4);
+const fmtTime = s => { s=Math.max(0,s); const m=Math.floor(s/60), r=s%60; return String(m).padStart(2,"0")+":"+String(r).padStart(2,"0"); };
+const shuffle = a => { a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; };
+function li(){ const i=LANGS.indexOf(S.lang); return i<0?1:i; }
+function t(k,p){
+  const a = K[k]; if(!a) return k;
+  let s = a[li()] || a[1] || a[0];
+  if (p) s = s.replace(/\{(\w+)\}/g,(m,x)=>p[x]!==undefined?p[x]:m);
+  return s;
+}
+function fmtDate(ts){ try{ return new Date(ts).toLocaleString(S.lang||"en",{day:"2-digit",month:"2-digit",year:"numeric",hour:"2-digit",minute:"2-digit"}); }catch(e){ return new Date(ts).toLocaleString(); } }
+function toast(msg){ const el=document.getElementById("toast"); el.textContent=msg; el.classList.add("show"); clearTimeout(toast.h); toast.h=setTimeout(()=>el.classList.remove("show"),2600); }
+function applyLang(){ document.documentElement.lang = S.lang||"en"; document.documentElement.dir = S.lang==="ar"?"rtl":"ltr"; }
+function go(v){ if(U.view==="exam") return; U.view=v; U.modal=null; render(); window.scrollTo(0,0); }
+function level(p){ const L=[[70,"A+"],[65,"A"],[60,"B+"],[55,"B"],[50,"C+"],[46,"C"]]; for(const [m,n] of L) if(p>=m) return n; return null; }
+function band(p){ const c=Math.round(p/100*40); const T=[[39,"9"],[37,"8.5"],[35,"8"],[33,"7.5"],[30,"7"],[27,"6.5"],[23,"6"],[19,"5.5"],[15,"5"],[13,"4.5"],[10,"4"]]; for(const [m,b] of T) if(c>=m) return b; return "≤ 3.5"; }
+function examOf(id){ return S.exams.find(e=>e.id===id) || S.exams[0]; }
+function exName(e){ return e.nameKey ? t(e.nameKey) : e.name; }
+function subjLabel(s){ const a=SUBJ[s]; return a ? (a[li()]||a[1]||s) : s; }
+function bestOf(id){ const a=S.attempts.filter(x=>x.testId===id); return a.length?Math.max(...a.map(x=>x.pct)):null; }
+function isLocked(x){ return CONFIG.PREMIUM && x.premium && !S.unlocked.includes(x.id); }
+function scoreLine(a){
+  const sc = a.scoring || (a.type==="Milliy sertifikat"?"level":"dtm"), p = a.pct;
+  if (sc==="level"){ const l=level(p); return t("sc_level",{v:l||t("no_level")}); }
+  if (sc==="dtm") return t("sc_dtm",{v:Math.round(p/100*189*10)/10});
+  if (sc==="ielts") return t("sc_ielts",{v:band(p)});
+  if (sc==="sat") return t("sc_sat",{v:Math.round((200+p/100*600)/10)*10});
+  return t("sc_pct",{v:p});
+}
+function confirmThen(msgKey, fn){ U.pending=fn; U.modal={type:"confirm",msgKey}; render(); }
+
+/* ================= Ko'rinishlar ================= */
+function langGate(){
+  return `<div class="gate"><div class="box">
+    <h1>Sinov</h1>
+    <p class="muted">Tilni tanlang / Choose your language / Выберите язык</p>
+    <div class="langgrid">${LANGS.map((c,i)=>`<button data-act="setlang" data-v="${c}">${NATIVE[i]}</button>`).join("")}</div>
+  </div></div>`;
+}
+function shell(inner){
+  const nav = [["home","nav_home"],["library","nav_tests"],["history","nav_results"]].concat(S.owner?[["import","nav_import"],["editor","nav_editor"]]:[]).concat([["profile","nav_profile"]]);
+  return `<header class="top"><div class="wrap">
+    <button class="brand" data-act="go" data-v="home">Sinov</button>
+    <nav aria-label="Menu">${nav.map(([v,k])=>`<button class="${U.view===v?"on":""}" data-act="go" data-v="${v}">${t(k)}</button>`).join("")}</nav>
+    <select class="langsel" data-lang aria-label="${esc(t("pr_lang"))}">${LANGS.map((c,i)=>`<option value="${c}" ${c===S.lang?"selected":""}>${NATIVE[i]}</option>`).join("")}</select>
+  </div></header><main><div class="wrap">${inner}</div></main>${modalHTML()}`;
+}
+function testCard(x){
+  const best = bestOf(x.id), locked = isLocked(x), ex = examOf(x.exam);
+  const meta = x.duration ? t("meta_timed",{s:subjLabel(x.subject),q:x.questions.length,m:x.duration}) : t("meta_untimed",{s:subjLabel(x.subject),q:x.questions.length});
+  return `<article class="tcard">
+    <div class="row"><span class="pill p-blue">${esc(exName(ex))}</span><span class="pill p-grey">${esc((x.lang||"").toUpperCase())}</span>${CONFIG.PREMIUM&&x.premium?`<span class="pill p-amber">${locked?t("need_sub"):t("sub_on")}</span>`:""}</div>
+    <h3>${esc(x.title)}</h3>
+    <p class="muted">${esc(meta)}</p>
+    ${best!==null?`<p class="best">${t("best",{n:best})}</p>`:""}
+    <button class="btn sm" data-act="start" data-id="${x.id}">${locked?t("subscribe"):t("start")}</button>
+  </article>`;
+}
+function viewHome(){
+  const qk = U.quick;
+  const quick = `<div class="quick">
+    <p class="muted note" style="margin-top:0">${t("quick_hint")}</p>
+    <div class="q">${esc(t("quick_q"))}</div>
+    ${QUICK_OPTS.map((o,i)=>{
+      let c=""; if(qk!==null){ if(i===QUICK_A) c="good"; else if(i===qk) c="bad"; }
+      return `<button class="opt ${c}" data-act="quick" data-i="${i}" ${qk!==null?"disabled":""}><span class="ol">${"ABCD"[i]}</span><span>${esc(o)}</span></button>`;
+    }).join("")}
+    ${qk!==null?`<div class="exp"><b>${qk===QUICK_A?t("quick_ok"):t("quick_no")}</b> ${esc(t("quick_exp"))}</div>
+    <div class="row" style="margin-top:12px"><button class="btn sm" data-act="go" data-v="library">${t("btn_browse")}</button><button class="btn sm ghost" data-act="quickreset">${t("quick_retry")}</button></div>`:""}
+  </div>`;
+  const exams = S.exams.map(e=>{
+    const n = S.tests.filter(x=>x.exam===e.id).length;
+    return `<button class="xcard" data-act="openexam" data-id="${e.id}"><b>${esc(exName(e))}</b><span class="muted">${t("n_tests",{n})}</span></button>`;
+  }).join("");
+  return `<section class="hero">
+    <div><h1>${t("hero_title")}</h1><p class="lead">${t("hero_lead")}</p>
+    <div class="row"><button class="btn" data-act="go" data-v="library">${t("btn_browse")}</button></div></div>${quick}
+  </section>
+  <h2>${t("home_exams")}</h2><div class="grid">${exams}</div>
+  <h2 style="margin-top:36px">${t("home_feat")}</h2><div class="grid">${S.tests.slice(0,3).map(testCard).join("")}</div>`;
+}
+function viewLibrary(){
+  const exams = S.exams, subs = [...new Set(S.tests.map(x=>x.subject))], langs = [...new Set(S.tests.map(x=>x.lang))];
+  const list = S.tests.filter(x=>(U.fExam==="all"||x.exam===U.fExam)&&(U.fSub==="all"||x.subject===U.fSub)&&(U.fLang==="all"||x.lang===U.fLang));
+  const chip = (act,val,cur,label)=>`<button class="chip ${cur===val?"on":""}" data-act="${act}" data-v="${esc(val)}">${esc(label)}</button>`;
+  return `<h2>${t("nav_tests")}</h2>
+  <div class="chips">${chip("fexam","all",U.fExam,t("all_exams"))}${exams.map(e=>chip("fexam",e.id,U.fExam,exName(e))).join("")}</div>
+  <div class="chips">${chip("fsub","all",U.fSub,t("all_subjects"))}${subs.map(s=>chip("fsub",s,U.fSub,subjLabel(s))).join("")}</div>
+  ${langs.length>1?`<div class="chips">${chip("flang","all",U.fLang,t("all_langs"))}${langs.map(l=>chip("flang",l,U.fLang,l.toUpperCase())).join("")}</div>`:""}
+  ${list.length?`<div class="grid">${list.map(testCard).join("")}</div>`:`<div class="panel">${t("no_tests")}</div>`}`;
+}
+function viewExam(){
+  const E = U.ex, q = E.qs[E.i], last = E.i===E.qs.length-1;
+  const left = E.end ? Math.round((E.end-Date.now())/1000) : null;
+  const answered = E.ans.filter(a=>a!==null).length;
+  return `<div class="exambar"><div class="wrap">
+      <div class="t">${esc(E.test.title)}</div>
+      <div style="color:#cfe0ec">${t("answered",{a:answered,n:E.qs.length})}</div>
+      ${E.end?`<div class="timer ${left<=60?"low":""}" id="timer">${fmtTime(left)}</div>`:""}
+      <button class="btn sm alt" data-act="askfinish">${t("finish")}</button>
+  </div></div>
+  <main><div class="wrap"><div class="examgrid">
+    <section class="qpane">
+      <div class="qmeta">${t("qxofn",{i:E.i+1,n:E.qs.length})} ${E.flag[E.i]?t("flagged_note"):""}</div>
+      ${q.ctx?`<div class="ctx">${esc(q.ctx)}</div>`:""}<h2 class="qtext">${esc(q.q)}</h2>
+      ${q.opts.map((o,k)=>`<button class="opt ${E.ans[E.i]===k?"on":""}" data-act="pick" data-k="${k}"><span class="ol">${"ABCDEF"[k]}</span><span>${esc(o.t)}</span></button>`).join("")}
+      <div class="navbtns">
+        <button class="btn ghost" data-act="prev" ${E.i===0?"disabled":""}>${t("prev")}</button>
+        <button class="btn ghost" data-act="flag">${E.flag[E.i]?t("unflag"):t("flag")}</button>
+        ${last?`<button class="btn" data-act="askfinish">${t("finish")}</button>`:`<button class="btn" data-act="next">${t("next")}</button>`}
+      </div>
+      <p class="muted note" style="margin-top:16px">${t("kbd")}</p>
+    </section>
+    <aside class="navpane">
+      <b>${t("nav_questions")}</b>
+      <div class="qgrid">${E.qs.map((_,i)=>`<button class="qn ${E.ans[i]!==null?"done":""} ${i===E.i?"cur":""} ${E.flag[i]?"flag":""}" data-act="jump" data-i="${i}" aria-label="${i+1}">${i+1}</button>`).join("")}</div>
+      <div class="legend">
+        <span><i class="sw" style="background:#dbe8f2;border-color:var(--blue)"></i>${t("lg_done")}</span>
+        <span><i class="sw" style="background:#fff"></i>${t("lg_todo")}</span>
+        <span><i class="sw" style="background:var(--amber);border-color:var(--amber)"></i>${t("lg_flag")}</span>
+      </div>
+      <button class="btn" style="width:100%" data-act="askfinish">${t("finish_test")}</button>
+    </aside>
+  </div></div></main>${modalHTML()}`;
+}
+function topicStats(a){
+  const m = {};
+  a.details.forEach(d=>{ const k=d.topic||"—"; m[k]=m[k]||{ok:0,n:0}; m[k].n++; if(d.chosen===d.correct) m[k].ok++; });
+  return Object.entries(m).map(([k,v])=>({t:k,pct:Math.round(v.ok/v.n*100)})).sort((x,y)=>x.pct-y.pct);
+}
+function localAdvice(a){
+  const ts = topicStats(a), weak = ts.filter(x=>x.pct<60), strong = ts.filter(x=>x.pct>=80);
+  let s = weak.length ? t("advice_weak",{t:weak.map(x=>x.t).join(", ")}) : t("advice_none");
+  if (strong.length) s += " "+t("advice_strong",{t:strong.map(x=>x.t).join(", ")});
+  const un = a.details.filter(d=>d.chosen===null).length;
+  if (un) s += " "+t("advice_unans",{n:un});
+  return s;
+}
+function viewResult(){
+  const a = S.attempts.find(x=>x.id===U.resultId);
+  if (!a) return `<div class="panel">${t("not_found")}</div>`;
+  const col = a.pct>=70?"var(--green)":a.pct>=50?"var(--teal)":"var(--red)";
+  const ai = U.ai && U.ai.id===a.id ? U.ai : null;
+  return `<div class="panel res">
+    <div class="ring" style="background:conic-gradient(${col} ${a.pct*3.6}deg,var(--line) 0)"><div><span><b>${a.pct}%</b><br><span class="muted">${a.correct} / ${a.total}</span></span></div></div>
+    <div>
+      <h2>${esc(a.title)}</h2>
+      <p class="muted">${esc(a.examName||"")} / ${fmtDate(a.date)} / ${t("spent",{t:fmtTime(a.sec)})}</p>
+      <p><b>${esc(scoreLine(a))}</b></p>
+      <p class="muted note">${t("approx")}</p>
+      <div class="row">
+        <button class="btn sm" data-act="review" data-id="${a.id}">${t("view_ans")}</button>
+        <button class="btn sm alt" data-act="start" data-id="${a.testId}">${t("retry")}</button>
+        <button class="btn sm ghost" data-act="share" data-id="${a.id}">${t("share")}</button>
+        <button class="btn sm ghost" data-act="tg" data-id="${a.id}">${t("share_tg")}</button>
+      </div>
+    </div></div>
+  <div class="panel" style="margin-top:18px">
+    <h3>${t("topic_an")}</h3>
+    ${topicStats(a).map(x=>`<div class="trow"><span>${esc(x.t)}</span><div class="bar"><i class="${x.pct<50?"low":x.pct<75?"mid":""}" style="width:${x.pct}%"></i></div><span>${x.pct}%</span></div>`).join("")}
+    <p style="margin-top:14px">${esc(localAdvice(a))}</p>
+    <div class="row"><button class="btn sm" data-act="ai" data-id="${a.id}" ${ai&&ai.state==="loading"?"disabled":""}>${ai&&ai.state==="loading"?t("ai_loading"):t("ai_btn")}</button></div>
+    ${ai&&ai.state==="ok"?`<div class="ai">${esc(ai.text)}</div>`:""}
+    ${ai&&ai.state==="err"?`<p class="note" style="color:var(--red)">${t("ai_err")}</p>`:""}
+  </div>`;
+}
+function viewReview(){
+  const a = S.attempts.find(x=>x.id===U.resultId);
+  if (!a) return `<div class="panel">${t("not_found")}</div>`;
+  return `<div class="row" style="margin-bottom:14px"><button class="btn sm ghost" data-act="result" data-id="${a.id}">${t("back_result")}</button></div>
+  <h2>${esc(t("rv_title",{x:a.title}))}</h2>
+  ${a.details.map((d,i)=>{
+    const ok = d.chosen===d.correct, st = d.chosen===null?t("s_none"):ok?t("s_ok"):t("s_bad");
+    return `<div class="rv ${ok?"ok":"no"}"><div class="muted note" style="margin:0 0 4px">${esc(t("rv_meta",{i:i+1,t:d.topic,s:st}))}</div>
+      <p style="font-weight:600">${esc(d.q)}</p>
+      ${d.opts.map((o,k)=>{ let c=""; if(k===d.correct) c="good"; else if(k===d.chosen) c="bad"; return `<div class="opt ${c}"><span class="ol">${"ABCDEF"[k]}</span><span>${esc(o)}</span></div>`; }).join("")}
+      ${d.exp?`<div class="exp"><b>${t("expl")}</b> ${esc(d.exp)}</div>`:""}</div>`;
+  }).join("")}`;
+}
+function viewHistory(){
+  const A = S.attempts;
+  if (!A.length) return `<h2>${t("nav_results")}</h2><div class="panel">${t("h_empty")} <button class="btn sm" data-act="go" data-v="library">${t("nav_tests")}</button></div>`;
+  const avg = Math.round(A.reduce((s,x)=>s+x.pct,0)/A.length*10)/10, best = Math.max(...A.map(x=>x.pct));
+  return `<h2>${t("nav_results")}</h2>
+  <div class="stats"><div class="stat"><b>${A.length}</b>${t("h_count")}</div><div class="stat"><b>${avg}%</b>${t("h_avg")}</div><div class="stat"><b>${best}%</b>${t("h_best")}</div></div>
+  <div class="scroll"><table><thead><tr><th>${t("c_date")}</th><th>${t("c_test")}</th><th>${t("c_result")}</th><th>${t("c_time")}</th><th></th></tr></thead><tbody>
+  ${A.map(x=>`<tr><td>${fmtDate(x.date)}</td><td>${esc(x.title)}</td><td>${x.correct}/${x.total} (${x.pct}%)</td><td>${fmtTime(x.sec)}</td><td><button class="btn sm ghost" data-act="result" data-id="${x.id}">${t("open")}</button></td></tr>`).join("")}
+  </tbody></table></div>`;
+}
+function newDraft(){ return {editId:null,title:"",subject:"Fizika",exam:S.exams[0].id,lang:S.lang||"uz",duration:30,premium:false,shuffle:true,qs:[],cur:{q:"",o:["","","",""],a:0,topic:"",exp:""},bulk:""}; }
+function viewEditor(){
+  if (!U.draft) U.draft = newDraft();
+  const d = U.draft, c = d.cur, xd = U.xd;
+  const scs = ["level","dtm","percent","ielts","sat"];
+  return `<h2>${t("ed_title")}</h2>
+  <p class="muted">${t("ed_note")}</p>
+  <div class="panel" style="margin-bottom:18px"><h3>Hammaga nashr qilish</h3>
+    <p class="muted note">Testlar shu qurilmada tayyorlanadi. Hammaga ko'rsatish uchun "tests.json" yuklab oling va GitHub repozitoriyingizga shu nom bilan yuklang (Add file, Upload files). Keyin sayt hamma uchun yangilanadi.</p>
+    <div class="row" style="margin-top:10px"><button class="btn" data-act="pubexport">tests.json yuklab olish</button><button class="btn ghost" data-act="pubload">Saytdagi testlarni yuklash</button></div>
+  </div>
+  <div class="panel">
+    <h3>${t("ed_examsh")}</h3>
+    <div class="row" style="margin-bottom:10px">${S.exams.map(e=>`<span class="pill p-blue">${esc(exName(e))} <button class="chip" style="padding:0 8px;margin-inline-start:6px" data-act="delexam" data-id="${e.id}" aria-label="${esc(t("ed_del"))}">×</button></span>`).join("")}</div>
+    <div class="cols">
+      <div><label for="x-name">${t("ed_examname")}</label><input type="text" id="x-name" data-x="name" value="${esc(xd.name)}"></div>
+      <div><label for="x-sc">${t("ed_scoring")}</label><select id="x-sc" data-x="scoring">${scs.map(s=>`<option value="${s}" ${xd.scoring===s?"selected":""}>${t("ed_sc_"+s)}</option>`).join("")}</select></div>
+    </div>
+    <div class="row" style="margin-top:12px"><button class="btn sm alt" data-act="addexam">${t("ed_addexam")}</button></div>
+  </div>
+  <div class="panel" style="margin-top:18px">
+    <h3>${d.editId?t("ed_edit"):t("ed_new")}</h3>
+    <div class="cols">
+      <div><label for="f-title">${t("ed_name")}</label><input type="text" id="f-title" data-f="title" value="${esc(d.title)}"></div>
+      <div><label for="f-subject">${t("ed_subject")}</label><input type="text" id="f-subject" data-f="subject" value="${esc(d.subject)}" list="sublist"><datalist id="sublist">${["Fizika","Matematika","Kimyo","Biologiya","Ona tili","Ingliz tili","Tarix","Geografiya"].map(s=>`<option value="${s}">`).join("")}</datalist></div>
+      <div><label for="f-exam">${t("ed_exam")}</label><select id="f-exam" data-f="exam">${S.exams.map(e=>`<option value="${e.id}" ${d.exam===e.id?"selected":""}>${esc(exName(e))}</option>`).join("")}</select></div>
+      <div><label for="f-lang">${t("ed_lang")}</label><select id="f-lang" data-f="lang">${LANGS.map((l,i)=>`<option value="${l}" ${d.lang===l?"selected":""}>${NATIVE[i]}</option>`).join("")}</select></div>
+      <div><label for="f-dur">${t("ed_dur")}</label><input type="number" id="f-dur" data-f="duration" min="0" value="${d.duration}"></div>
+    </div>
+    <label style="font-weight:500"><input type="checkbox" data-f="premium" ${d.premium?"checked":""}> ${t("ed_sub")}</label>
+    <label style="font-weight:500"><input type="checkbox" data-f="shuffle" ${d.shuffle?"checked":""}> ${t("ed_shuffle")}</label>
+
+    <h3 style="margin-top:22px">${t("ed_qh",{n:d.qs.length})}</h3>
+    <label for="f-q">${t("ed_qtext")}</label><textarea id="f-q" data-f="q" style="min-height:70px">${esc(c.q)}</textarea>
+    <label>${t("ed_opts")}</label>
+    <div class="opts-edit">${[0,1,2,3].map(k=>`<div><input type="radio" name="ra" data-f="a" value="${k}" ${c.a===k?"checked":""} aria-label="${"ABCD"[k]}"><input type="text" data-f="o${k}" value="${esc(c.o[k])}" placeholder="${"ABCD"[k]}"></div>`).join("")}</div>
+    <div class="cols"><div><label for="f-topic">${t("ed_topic")}</label><input type="text" id="f-topic" data-f="topic" value="${esc(c.topic)}"></div>
+    <div><label for="f-exp">${t("ed_exp")}</label><input type="text" id="f-exp" data-f="exp" value="${esc(c.exp)}"></div></div>
+    <div class="row" style="margin-top:14px"><button class="btn sm alt" data-act="addq">${t("ed_addq")}</button></div>
+    ${d.qs.length?`<h3 style="margin-top:22px">${t("ed_list")}</h3>${d.qs.map((q,i)=>`<div class="row" style="justify-content:space-between;border-bottom:1px solid var(--line);padding:6px 0"><span>${i+1}. ${esc(q.q.slice(0,80))}${q.q.length>80?"...":""}</span><button class="btn sm danger" data-act="delq" data-i="${i}">${t("ed_del")}</button></div>`).join("")}`:""}
+
+    <h3 style="margin-top:22px">${t("ed_bulkh")}</h3>
+    <p class="muted note">${t("ed_bulknote")}</p>
+    <textarea data-f="bulk" aria-label="bulk">${esc(d.bulk)}</textarea>
+    <div class="row" style="margin-top:10px"><button class="btn sm alt" data-act="bulk">${t("ed_bulkbtn")}</button></div>
+    <div class="row" style="margin-top:22px"><button class="btn" data-act="savetest">${d.editId?t("ed_savechg"):t("ed_save")}</button>${d.editId||d.qs.length?`<button class="btn ghost" data-act="resetdraft">${t("ed_cancel")}</button>`:""}</div>
+  </div>
+  <h3 style="margin-top:30px">${t("ed_existing")}</h3>
+  <div class="scroll"><table><thead><tr><th>${t("c_test")}</th><th>${t("ed_exam")}</th><th>#</th><th></th></tr></thead><tbody>
+  ${S.tests.map(x=>`<tr><td>${esc(x.title)}${x.premium?` <span class="pill p-amber">${t("sub_on")}</span>`:""}</td><td>${esc(exName(examOf(x.exam)))}</td><td>${x.questions.length}</td><td><div class="row"><button class="btn sm ghost" data-act="editt" data-id="${x.id}">${t("ed_edit_btn")}</button><button class="btn sm danger" data-act="delt" data-id="${x.id}">${t("ed_del")}</button></div></td></tr>`).join("")}
+  </tbody></table></div>`;
+}
+function viewProfile(){
+  const p = S.profile, prem = S.tests.filter(x=>x.premium);
+  const tgMini = window.Telegram && Telegram.WebApp && Telegram.WebApp.initDataUnsafe && Telegram.WebApp.initDataUnsafe.user;
+  return `<h2>${t("pr_title")}</h2>
+  <div class="panel">
+    <div class="cols">
+      <div><label for="p-name">${t("pr_name")}</label><input type="text" id="p-name" data-p="name" value="${esc(p.name)}"></div>
+      <div><label for="p-lang">${t("pr_lang")}</label><select id="p-lang" data-lang>${LANGS.map((c,i)=>`<option value="${c}" ${c===S.lang?"selected":""}>${NATIVE[i]}</option>`).join("")}</select></div>
+    </div>
+  </div>
+  ${(S.owner||CONFIG.TG_BOT)?`<div class="panel" style="margin-top:18px"><h3>${t("pr_login")}</h3>
+    ${p.tg?`<p><b>Telegram: ${esc(p.tg)}</b></p>`:""}
+    ${tgMini?`<p class="muted">Telegram Mini App: ${esc(tgMini.first_name||"")}</p>`:""}
+    <div id="tgbox"></div>
+    ${CONFIG.TG_BOT?"":`<p class="muted note">${t("pr_tg")}: ${t("pr_tg_note")}</p>`}
+    <p class="muted note">${t("pr_local")}</p>
+  </div>`:""}
+  ${S.owner?`<div class="panel" style="margin-top:18px"><h3>${t("pr_ai")}</h3>
+    <input type="text" data-p="aiUrl" value="${esc(p.aiUrl||"")}" placeholder="https://your-server.example/api/analyze" aria-label="AI endpoint">
+    <p class="muted note">${t("pr_ai_note")}</p>
+  </div>
+  <div class="panel" style="margin-top:18px"><h3>Egasi rejimi yoqilgan</h3>
+    <p class="muted note">Muharrir va kitobdan test bo'limlari faqat shu qurilmada ko'rinadi. Boshqa foydalanuvchilarga ko'rinmaydi.</p>
+    <button class="btn sm danger" data-act="ownoff">Egasi rejimini o'chirish</button>
+  </div>`:""}
+  ${CONFIG.PREMIUM?`<div class="panel" style="margin-top:18px"><h3>${t("pr_subs")}</h3>
+    ${prem.length?prem.map(x=>`<div class="row" style="justify-content:space-between;border-bottom:1px solid var(--line);padding:8px 0"><span>${esc(x.title)}</span>${S.unlocked.includes(x.id)?`<span class="pill p-teal">${t("sub_on")}</span>`:`<button class="btn sm" data-act="sub" data-id="${x.id}">${t("pr_sub_btn")}</button>`}</div>`).join(""):`<p class="muted">${t("pr_none")}</p>`}
+    <p class="muted note" style="margin-top:10px">${t("pr_demo")}</p>
+  </div>`:""}
+  <div class="panel" style="margin-top:18px"><h3>${t("pr_data")}</h3>
+    <div class="row"><button class="btn sm alt" data-act="export">${t("pr_export")}</button><button class="btn sm alt" data-act="importbtn">${t("pr_import")}</button><button class="btn sm danger" data-act="resetall">${t("pr_reset")}</button></div>
+  </div>`;
+}
+function modalHTML(){
+  const m = U.modal; if (!m) return "";
+  if (m.type==="finish"){
+    const E = U.ex, un = E.ans.filter(a=>a===null).length, fl = E.flag.filter(Boolean).length;
+    return `<div class="ov"><div class="modal" role="dialog" aria-modal="true"><h3>${t("fin_title")}</h3>
+      <p>${un?t("fin_unans",{n:un}):t("fin_all")} ${fl?t("fin_flag",{n:fl}):""}</p>
+      <div class="row"><button class="btn" data-act="finish">${t("fin_yes")}</button><button class="btn ghost" data-act="closemodal">${t("fin_back")}</button></div></div></div>`;
+  }
+  if (m.type==="sub"){
+    const x = S.tests.find(y=>y.id===m.id); if(!x) return "";
+    return `<div class="ov"><div class="modal" role="dialog" aria-modal="true"><h3>${esc(x.title)}</h3><p>${t("sub_modal")}</p>
+      <div class="row"><button class="btn" data-act="unlock" data-id="${x.id}">${t("sub_go")}</button><button class="btn ghost" data-act="closemodal">${t("close")}</button></div></div></div>`;
+  }
+  if (m.type==="confirm"){
+    return `<div class="ov"><div class="modal" role="dialog" aria-modal="true"><p>${t(m.msgKey)}</p>
+      <div class="row"><button class="btn" data-act="doconfirm">${t("cf_yes")}</button><button class="btn ghost" data-act="closemodal">${t("cf_no")}</button></div></div></div>`;
+  }
+  return "";
+}
+function render(){
+  applyLang();
+  if (!S.lang){ $app.innerHTML = langGate(); return; }
+  if (!S.owner && (U.view==="editor"||U.view==="import")) U.view="home";
+  let html;
+  switch(U.view){
+    case "library": html = shell(viewLibrary()); break;
+    case "exam": html = viewExam(); break;
+    case "result": html = shell(viewResult()); break;
+    case "review": html = shell(viewReview()); break;
+    case "history": html = shell(viewHistory()); break;
+    case "editor": html = shell(viewEditor()); break;
+    case "import": html = shell(viewImport()); break;
+    case "profile": html = shell(viewProfile()); break;
+    default: html = shell(viewHome());
+  }
+  const ae = document.activeElement, id = ae && ae.id;
+  $app.innerHTML = html;
+  if (id){ const el = document.getElementById(id); if (el) el.focus(); }
+  if (U.view==="profile") mountTg();
+}
+function mountTg(){
+  const box = document.getElementById("tgbox");
+  if (!box || !CONFIG.TG_BOT) return;
+  window.onTelegramAuth = u => {
+    S.profile.tg = u.username ? "@"+u.username : (u.first_name||"");
+    if (!S.profile.name) S.profile.name = u.first_name || "";
+    S.profile.tgId = u.id; save(); render(); toast("Telegram: "+S.profile.tg);
+  };
+  const s = document.createElement("script");
+  s.async = true; s.src = "https://telegram.org/js/telegram-widget.js?22";
+  s.setAttribute("data-telegram-login", CONFIG.TG_BOT);
+  s.setAttribute("data-size","large");
+  s.setAttribute("data-onauth","onTelegramAuth(user)");
+  s.setAttribute("data-request-access","write");
+  box.appendChild(s);
+}
+
+/* ================= Imtihon mantiqi ================= */
+function startExam(id){
+  const x = S.tests.find(y=>y.id===id); if(!x) return;
+  if (isLocked(x)){ U.modal = {type:"sub",id}; render(); return; }
+  if (!x.questions.length){ toast(t("t_noqs")); return; }
+  const qs = x.questions.map(q=>{
+    let opts = q.o.map((tx,i)=>({t:tx,ok:i===q.a}));
+    if (x.shuffle!==false && !q.fixed) opts = shuffle(opts);
+    return {q:q.q, ctx:q.ctx||"", topic:q.topic||"—", exp:q.exp||"", opts, a:opts.findIndex(o=>o.ok)};
+  });
+  U.ex = {test:x, qs, ans:Array(qs.length).fill(null), flag:Array(qs.length).fill(false), i:0, start:Date.now(), end:x.duration?Date.now()+x.duration*60000:null};
+  U.view = "exam"; U.modal = null; U.ai = null;
+  startTimer(); render(); window.scrollTo(0,0);
+}
+function startTimer(){
+  clearInterval(U.tm);
+  U.tm = setInterval(()=>{
+    const E = U.ex; if(!E||!E.end) return;
+    const left = Math.max(0, Math.round((E.end-Date.now())/1000));
+    const el = document.getElementById("timer");
+    if (el){ el.textContent = fmtTime(left); el.classList.toggle("low", left<=60); }
+    if (left<=0) finishExam(true);
+  }, 500);
+}
+function finishExam(auto){
+  const E = U.ex; if(!E) return;
+  clearInterval(U.tm);
+  let correct = 0;
+  const details = E.qs.map((q,i)=>{
+    const ok = E.ans[i]===q.a; if(ok) correct++;
+    return {q:q.q, opts:q.opts.map(o=>o.t), chosen:E.ans[i], correct:q.a, topic:q.topic, exp:q.exp};
+  });
+  const total = E.qs.length, pct = Math.round(correct/total*1000)/10, ex = examOf(E.test.exam);
+  const at = {id:uid(), testId:E.test.id, title:E.test.title, subject:E.test.subject, examName:exName(ex), scoring:ex.scoring, date:Date.now(), total, correct, pct, sec:Math.round((Date.now()-E.start)/1000), details};
+  S.attempts.unshift(at); save();
+  U.ex = null; U.modal = null; U.resultId = at.id; U.view = "result";
+  if (auto) toast(t("time_up"));
+  render(); window.scrollTo(0,0);
+}
+
+/* ================= Ulashish va AI ================= */
+function shareText(a){
+  const w = S.profile.name ? S.profile.name+": " : "";
+  const sc = a.scoring || "percent";
+  const l = (sc==="level" && level(a.pct)) ? ", "+level(a.pct) : sc==="ielts" ? ", IELTS "+band(a.pct) : "";
+  return t("share_text",{w,x:a.title,c:a.correct,n:a.total,p:a.pct,l});
+}
+async function shareResult(id){
+  const a = S.attempts.find(x=>x.id===id); if(!a) return;
+  const text = shareText(a);
+  try{ if (navigator.share){ await navigator.share({title:"Sinov", text, url:location.href.startsWith("http")?location.href:undefined}); return; } }catch(e){ return; }
+  try{ await navigator.clipboard.writeText(text); toast(t("copied")); }catch(e){ toast(text); }
+}
+function shareTelegram(id){
+  const a = S.attempts.find(x=>x.id===id); if(!a) return;
+  const url = location.href.startsWith("http") ? location.href : "https://t.me";
+  window.open("https://t.me/share/url?url="+encodeURIComponent(url)+"&text="+encodeURIComponent(shareText(a)), "_blank");
+}
+async function runAI(id){
+  const a = S.attempts.find(x=>x.id===id); if(!a) return;
+  U.ai = {id, state:"loading"}; render();
+  const wrong = a.details.filter(d=>d.chosen!==d.correct).slice(0,15).map(d=>`- [${d.topic}] ${d.q}`).join("\n") || "none";
+  const topics = topicStats(a).map(x=>`${x.t}: ${x.pct}%`).join(", ");
+  const langName = AI_LANG[li()];
+  const prompt = `You are an experienced teacher. A student took the test "${a.title}" (${a.subject}, ${a.examName}) and scored ${a.correct}/${a.total} (${a.pct}%).\nResults by topic: ${topics}.\nQuestions answered incorrectly:\n${wrong}\n\nReply in ${langName}, in plain text without markdown: 1) a 3-4 sentence overall assessment, 2) the weakest topics and likely reasons for the mistakes, 3) three concrete steps for the next 7 days.`;
+  const url = (S.profile.aiUrl||"").trim() || CONFIG.AI_ENDPOINT;
+  try{
+    let text = "";
+    if (url){
+      /* Sizning serveringiz: POST {prompt, lang} -> {text}. Server ichida Claude yoki Gemini chaqiriladi. */
+      const r = await fetch(url,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({prompt,lang:S.lang})});
+      const d = await r.json(); text = (d.text||"").trim();
+    } else {
+      /* Claude.ai ichida ishlaydigan to'g'ridan-to'g'ri chaqiruv (o'z saytingizda server orqali qiling). */
+      const r = await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({model:"claude-sonnet-4-6",max_tokens:1000,messages:[{role:"user",content:prompt}]})});
+      const d = await r.json(); text = (d.content||[]).map(c=>c.text||"").join("\n").trim();
+    }
+    if (!text) throw new Error("empty");
+    U.ai = {id, state:"ok", text:text.replace(/[*#`]/g,"")};
+  }catch(e){ U.ai = {id, state:"err"}; }
+  render();
+}
+
+/* ================= Muharrir ================= */
+function parseBulk(txt){
+  const out = [];
+  txt.replace(/\r/g,"").split(/\n\s*\n/).forEach(b=>{
+    const lines = b.split("\n").map(s=>s.trim()).filter(Boolean);
+    const q = {q:"",o:[],a:-1,topic:"",exp:""}, ql = []; let m;
+    lines.forEach(l=>{
+      if ((m=l.match(/^([A-Da-d])[\)\.]\s*(.+)$/))) q.o[m[1].toUpperCase().charCodeAt(0)-65] = m[2];
+      else if ((m=l.match(/^(javob|answer|ответ|respuesta|réponse|resposta)\s*[:\-]\s*([A-Da-d])/i))) q.a = m[2].toUpperCase().charCodeAt(0)-65;
+      else if ((m=l.match(/^(mavzu|topic|тема|tema|thème)\s*:\s*(.+)$/i))) q.topic = m[2];
+      else if ((m=l.match(/^(izoh|explanation|пояснение|explicación|explication|explicação)\s*:\s*(.+)$/i))) q.exp = m[2];
+      else if (!q.o.length) ql.push(l);
+    });
+    q.q = ql.join(" ").replace(/^\d+[\.\)]\s*/,"");
+    if (q.q && q.o.length===4 && q.o.every(Boolean) && q.a>=0) out.push(q);
+  });
+  return out;
+}
+document.addEventListener("input", e=>{
+  const el = e.target;
+  if (el.dataset.p){ S.profile[el.dataset.p] = el.value; save(); return; }
+  if (el.dataset.x){ U.xd[el.dataset.x] = el.value; return; }
+  const f = el.dataset.f; if(!f||!U.draft) return;
+  const d = U.draft;
+  if (f==="premium"||f==="shuffle") d[f] = el.checked;
+  else if (f==="duration") d.duration = Math.max(0, parseInt(el.value)||0);
+  else if (/^o[0-3]$/.test(f)) d.cur.o[+f[1]] = el.value;
+  else if (f==="a") d.cur.a = +el.value;
+  else if (f==="q"||f==="topic"||f==="exp") d.cur[f] = el.value;
+  else d[f] = el.value;
+});
+document.addEventListener("change", e=>{
+  const el = e.target;
+  if (el.dataset.lang!==undefined && el.tagName==="SELECT"){ S.lang = el.value; save(); render(); }
+});
+
+
+/* ================= Kitobdan test yaratish (import) ================= */
+const PDFJS = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js";
+const PDFJS_WORKER = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+const MAMMOTH = "https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js";
+function loadScript(src){
+  return new Promise((res,rej)=>{
+    if (document.querySelector('script[src="'+src+'"]')) return res();
+    const s=document.createElement("script"); s.src=src; s.onload=res; s.onerror=()=>rej(new Error("load")); document.head.appendChild(s);
+  });
+}
+function imInit(){
+  if (!U.im) U.im = {pages:[],name:"",paste:"",from:1,to:1,mode:"parse",style:"ms",count:10,drafts:[],busy:false,msg:"",keyText:"",onlyFlag:false,
+    dest:{title:"",subject:"Ingliz tili",exam:S.exams[0].id,lang:S.lang||"uz",duration:30,per:30,premium:false,shuffle:true}};
+  return U.im;
+}
+async function extractPdf(file){
+  await loadScript(PDFJS);
+  pdfjsLib.GlobalWorkerOptions.workerSrc = PDFJS_WORKER;
+  const pdf = await pdfjsLib.getDocument({data: await file.arrayBuffer()}).promise;
+  const pages = [];
+  for (let i=1;i<=pdf.numPages;i++){
+    const pg = await pdf.getPage(i), tc = await pg.getTextContent();
+    let s=""; tc.items.forEach(it=>{ s += it.str + (it.hasEOL ? "\n" : " "); });
+    pages.push(s);
+  }
+  return pages;
+}
+async function imLoadFile(f){
+  if (!f) return;
+  const m = imInit(); m.name=f.name; m.busy=true; m.msg=t("im_reading"); render();
+  try{
+    const n=f.name.toLowerCase(); let pages=[];
+    if (n.endsWith(".pdf")) pages = await extractPdf(f);
+    else if (n.endsWith(".docx")){ await loadScript(MAMMOTH); const r = await mammoth.extractRawText({arrayBuffer: await f.arrayBuffer()}); pages=[r.value]; }
+    else pages=[await f.text()];
+    m.pages=pages; m.from=1; m.to=pages.length;
+    const chars = pages.join("").trim().length;
+    m.msg = (n.endsWith(".pdf") && chars < 40*Math.max(1,pages.length)) ? t("im_scanned") : t("im_loaded",{name:f.name,p:pages.length,c:chars});
+  }catch(err){ m.msg=t("im_readerr"); }
+  m.busy=false; render();
+}
+function imText(){
+  const m=U.im; if ((m.paste||"").trim()) return m.paste;
+  const a=Math.max(1,Math.min(m.from,m.pages.length||1)), b=Math.max(a,Math.min(m.to,m.pages.length||1));
+  return m.pages.slice(a-1,b).join("\n\n");
+}
+function chunkText(text,size){
+  const paras=text.split(/\n\s*\n/), out=[]; let cur="";
+  paras.forEach(p=>{
+    while (p.length>size){ if(cur){ out.push(cur); cur=""; } out.push(p.slice(0,size)); p=p.slice(size); }
+    if ((cur+"\n\n"+p).length>size && cur){ out.push(cur); cur=p; } else cur = cur ? cur+"\n\n"+p : p;
+  });
+  if (cur.trim()) out.push(cur);
+  return out;
+}
+const KEY_RE = /(\d{1,3})\s*[\-\.\):=]?\s*\(?([A-Ea-e])\)?(?![A-Za-z])/g;
+function parseKey(txt){ const key={}; String(txt||"").replace(KEY_RE,(x,n,l)=>{ key[+n]=l.toUpperCase().charCodeAt(0)-65; return x; }); return key; }
+function parseQuestions(text){
+  const tx=text.replace(/\r/g,"").replace(/\u00a0/g," ");
+  let body=tx, keyText="";
+  const km=tx.search(/\n\s*(?:answers?(?:\s*key)?|keys?|javoblar(?:\s*kaliti)?|kalit|ответы)\b[^\n]{0,20}\n/i);
+  if (km>0){ body=tx.slice(0,km); keyText=tx.slice(km); }
+  const key=parseKey(keyText), out=[];
+  body.split(/\n\s*(?=\d{1,3}\s?[\.\)]\s+\S)/).forEach(b=>{
+    const nm=b.match(/^\s*(\d{1,3})\s?[\.\)]\s+/); if(!nm) return;
+    const no=+nm[1]; b=b.slice(nm[0].length);
+    const re=/(?:^|\s)\(?([A-Ea-e])[\)\.]\s+/g; let m; const marks=[];
+    while ((m=re.exec(b))) marks.push({L:m[1].toUpperCase(), s:m.index+(m[0].length-m[0].trimStart().length), e:m.index+m[0].length});
+    const seq=[]; let want=0;
+    marks.forEach(k=>{ if (k.L.charCodeAt(0)-65===want){ seq.push(k); want++; } });
+    if (seq.length<2) return;
+    const q=b.slice(0,seq[0].s).replace(/\s+/g," ").trim();
+    const o=seq.map((k,i)=>b.slice(k.e, i+1<seq.length?seq[i+1].s:b.length).replace(/\s+/g," ").trim());
+    let a=-1; const last=o[o.length-1];
+    const am=last.match(/\s(?:answer|javob|ответ|key)\s*[:\-]\s*\(?([A-Ea-e])\)?\s*$/i);
+    if (am){ a=am[1].toUpperCase().charCodeAt(0)-65; o[o.length-1]=last.slice(0,am.index).trim(); }
+    else if (key[no]!==undefined && key[no]<o.length) a=key[no];
+    out.push({no,q,o,a});
+  });
+  return out;
+}
+function finalizeDraft(x){
+  const o=(x.o||[]).map(s=>String(s).replace(/^\(?[A-Ea-e][\)\.]\s+/,"").trim());
+  const fixed = o.length===3 && o.map(s=>s.toLowerCase()).join("|")==="true|false|not given";
+  return {no:(x.no===undefined?null:x.no), q:String(x.q||"").trim(), o, a:Number.isInteger(x.a)?x.a:-1,
+    topic:String(x.topic||"").trim(), exp:String(x.exp||"").trim(), ctx:x.ctx||"", fixed, conf:x.conf||"high", note:x.note||"", include:true, flags:[]};
+}
+function recheck(){
+  const seen=new Set();
+  U.im.drafts.forEach(x=>{
+    const f=[];
+    if (x.a<0||x.a>=x.o.length) f.push("fl_noans");
+    if (x.o.length<2||x.o.some(o=>!String(o).trim())) f.push("fl_opts");
+    if ((x.q||"").trim().length<10) f.push("fl_short");
+    const k=(x.q||"").toLowerCase().replace(/[^\p{L}\p{N}]+/gu," ").trim();
+    if (k && seen.has(k)) f.push("fl_dup"); else seen.add(k);
+    if (x.conf==="low") f.push("fl_low");
+    x.flags=f;
+  });
+}
+function aiEndpoint(){ return ((S.profile.aiUrl||"").trim()) || CONFIG.AI_ENDPOINT; }
+async function aiAsk(prompt){
+  const url=aiEndpoint();
+  if (url){
+    const r=await fetch(url,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({prompt,lang:S.lang,json:true})});
+    const d=await r.json(); const x=(d.text||"").trim(); if(!x) throw new Error("empty"); return x;
+  }
+  const r=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({model:"claude-sonnet-4-6",max_tokens:1000,messages:[{role:"user",content:prompt}]})});
+  const d=await r.json(); const x=(d.content||[]).map(c=>c.text||"").join("\n").trim(); if(!x) throw new Error("empty"); return x;
+}
+function parseJsonArray(s){
+  s=String(s).replace(/```json|```/g,""); const a=s.indexOf("["), b=s.lastIndexOf("]");
+  if (a<0||b<=a) return [];
+  try{ const arr=JSON.parse(s.slice(a,b+1)); return Array.isArray(arr)?arr:[]; }catch(e){ return []; }
+}
+function aiPrompt(kind,style,chunk,k,subject,qlang){
+  const schema='Return ONLY a JSON array, no markdown. Each item: {"no": number or null, "q": string, "o": [strings, without letters], "a": 0-based index of the correct option or -1 if unknown, "topic": short topic, "exp": one-sentence explanation, "conf": "high" or "low", "note": short reason if conf is low}.';
+  if (kind==="extract") return 'Extract the multiple-choice questions that already exist in the text below. Keep the original wording and numbering ("no"). Do not invent questions. If the correct answer is not shown in the text, set "a" to -1. If something looks garbled (OCR noise), fix obvious typos but set conf to "low".\n'+schema+'\n\nTEXT:\n'+chunk;
+  if (style==="ielts") return 'You are an IELTS examiner. From the passage below write '+k+' IELTS Academic Reading style questions, mixing multiple choice (4 options) and True/False/Not Given (options exactly ["True","False","Not Given"]). Use ONLY information in the passage; every question must have exactly one correct answer that can be verified in the passage. Write in English. If you are unsure about an item, set conf to "low" and explain in note.\n'+schema+'\n\nPASSAGE:\n'+chunk;
+  if (style==="ms") return 'You are an exam writer for the Uzbekistan National Certificate (Milliy sertifikat) exams, subject: '+subject+'. Based ONLY on the source text below, write '+k+' multiple-choice questions with exactly 4 options and one correct answer, mixing easy, medium and hard difficulty. Write in '+qlang+'. Make the wrong options plausible. If you are unsure about an item, set conf to "low" and explain in note.\n'+schema+'\n\nSOURCE TEXT:\n'+chunk;
+  return 'Based ONLY on the source text below, write '+k+' multiple-choice questions with exactly 4 options and one correct answer. Write in '+qlang+'. If you are unsure about an item, set conf to "low" and explain in note.\n'+schema+'\n\nSOURCE TEXT:\n'+chunk;
+}
+async function aiRun(text){
+  const m=U.im, direct=!aiEndpoint(), out=[];
+  const size = m.mode==="extract" ? (direct?3000:7000) : (m.style==="ielts"?6000:4000);
+  const chunks=chunkText(text,size);
+  const qlang=AI_LANG[LANGS.indexOf(m.dest.lang)]||AI_LANG[1];
+  if (m.mode==="extract"){
+    if (chunks.length>40) throw new Error("many");
+    for (let i=0;i<chunks.length;i++){
+      m.msg="AI: "+(i+1)+"/"+chunks.length; render();
+      parseJsonArray(await aiAsk(aiPrompt("extract",m.style,chunks[i],0,m.dest.subject,qlang))).forEach(x=>out.push(x));
+    }
+    return out;
+  }
+  let remaining=m.count, i=0, guard=0; const per=direct?3:8;
+  while (remaining>0 && guard++<40){
+    const chunk=chunks[i%chunks.length], k=Math.min(per,remaining);
+    m.msg="AI: "+out.length+"/"+m.count; render();
+    const arr=parseJsonArray(await aiAsk(aiPrompt("gen",m.style,chunk,k,m.dest.subject,qlang)));
+    i++;
+    if (!arr.length){ if (guard>4 && !out.length) break; continue; }
+    arr.forEach(x=>{ if (m.style==="ielts") x.ctx=chunk; out.push(x); });
+    remaining-=arr.length;
+  }
+  return out;
+}
+async function imRun(){
+  const m=imInit(), text=imText();
+  if (!text.trim()){ m.msg=t("im_none"); render(); return; }
+  m.busy=true; m.msg=""; render();
+  try{
+    const raw = m.mode==="parse" ? parseQuestions(text) : await aiRun(text);
+    m.drafts = raw.map(finalizeDraft).filter(x=>x.q && x.o.length>=2);
+    recheck(); m.msg = m.drafts.length ? "" : t("im_none");
+  }catch(e){ m.msg = (e && e.message==="many") ? t("im_many") : t("im_ai_err"); }
+  m.busy=false; render();
+}
+function imApplyKey(){
+  const m=U.im, key=parseKey(m.keyText); let c=0;
+  m.drafts.forEach(d=>{ if (d.no!=null && key[d.no]!==undefined && key[d.no]<d.o.length){ d.a=key[d.no]; c++; } });
+  recheck(); m.msg=t("im_keyapplied",{n:c}); render();
+}
+function imSave(){
+  const m=U.im, d=m.dest;
+  const ok=m.drafts.filter(x=>x.include && x.q.trim() && x.o.length>=2 && x.o.every(o=>String(o).trim()) && x.a>=0 && x.a<x.o.length);
+  if (!ok.length){ toast(t("im_nosel")); return; }
+  if (!d.title.trim()){ toast(t("t_noname")); return; }
+  const per = d.per>0 ? d.per : ok.length, tests=[];
+  for (let i=0;i<ok.length;i+=per){
+    const part=ok.slice(i,i+per);
+    tests.push({id:uid(), title: ok.length>per ? d.title.trim()+" "+(tests.length+1) : d.title.trim(), subject:(d.subject||"—").trim(), exam:d.exam, lang:d.lang,
+      duration:d.duration, premium:d.premium, shuffle:d.shuffle,
+      questions:part.map(x=>({q:x.q.trim(), o:x.o.map(s=>String(s).trim()), a:x.a, topic:x.topic||"", exp:x.exp||"", ctx:x.ctx||"", fixed:!!x.fixed}))});
+  }
+  S.tests.push(...tests); save(); m.drafts=[]; m.msg=t("im_saved",{n:tests.length}); render(); window.scrollTo(0,0);
+}
+function viewImport(){
+  const m=imInit(), d=m.dest, ai=m.mode!=="parse";
+  const flagged=m.drafts.filter(x=>x.flags.length).length;
+  const list=m.drafts.map((x,i)=>[x,i]).filter(([x])=>!m.onlyFlag||x.flags.length);
+  const sel=(k,val,opts)=>`<select data-im="${k}">${opts.map(([v,l])=>`<option value="${esc(v)}" ${String(val)===String(v)?"selected":""}>${esc(l)}</option>`).join("")}</select>`;
+  const draftCard=([x,i])=>`<div class="rv">
+    <div class="row" style="justify-content:space-between"><label style="font-weight:500;margin:0"><input type="checkbox" data-im="d.inc" data-i="${i}" ${x.include?"checked":""}> ${t("im_include")} #${x.no!=null?x.no:i+1}</label><span>${x.flags.map(f=>`<span class="pill p-amber">${t(f)}</span>`).join(" ")}</span></div>
+    ${x.note?`<p class="muted note">${esc(x.note)}</p>`:""}
+    ${x.ctx?`<details><summary class="muted note">${t("im_passage")}</summary><div class="ctx">${esc(x.ctx)}</div></details>`:""}
+    <textarea data-im="d.q" data-i="${i}" style="min-height:60px;margin-top:6px">${esc(x.q)}</textarea>
+    <div class="opts-edit" style="margin-top:8px">${x.o.map((o,k)=>`<div><input type="radio" name="ra${i}" data-im="d.a" data-i="${i}" value="${k}" ${x.a===k?"checked":""} aria-label="${"ABCDE"[k]||k+1}"><input type="text" data-im="d.o${k}" data-i="${i}" value="${esc(o)}"></div>`).join("")}</div>
+    <div class="cols"><div><label class="f">${t("ed_topic")}</label><input type="text" data-im="d.topic" data-i="${i}" value="${esc(x.topic)}"></div><div><label class="f">${t("ed_exp")}</label><input type="text" data-im="d.exp" data-i="${i}" value="${esc(x.exp)}"></div></div>
+    <div class="row" style="margin-top:8px"><button class="btn sm danger" data-act="im-del" data-i="${i}">${t("ed_del")}</button></div></div>`;
+  return `<h2>${t("im_title")}</h2><p class="muted">${t("im_note")}</p><p class="muted note">${t("im_copyright")}</p>
+  <div class="panel">
+    <div class="dz"><label class="f" style="margin-top:0" for="im-file">${t("im_file")}</label><input type="file" id="im-file" accept=".pdf,.docx,.txt,.md,application/pdf" ${m.busy?"disabled":""}></div>
+    ${m.msg?`<p class="note" style="margin-top:10px"><b>${esc(m.msg)}</b></p>`:""}
+    <label class="f">${t("im_paste")}</label><textarea data-im="paste" style="min-height:90px">${esc(m.paste)}</textarea>
+    ${m.pages.length>1?`<div class="cols"><div><label class="f">${t("im_from")} (1–${m.pages.length})</label><input type="number" min="1" max="${m.pages.length}" data-im="from" value="${m.from}"></div><div><label class="f">${t("im_to")}</label><input type="number" min="1" max="${m.pages.length}" data-im="to" value="${m.to}"></div></div>`:""}
+    <div class="cols">
+      <div><label class="f">${t("im_mode")}</label>${sel("mode",m.mode,[["parse",t("im_m_parse")],["extract",t("im_m_extract")],["gen",t("im_m_gen")]])}</div>
+      ${m.mode==="gen"?`<div><label class="f">${t("im_style")}</label>${sel("style",m.style,[["ms",t("im_s_ms")],["ielts",t("im_s_ielts")],["gen",t("im_s_gen")]])}</div><div><label class="f">${t("im_count")}</label><input type="number" min="1" max="200" data-im="count" value="${m.count}"></div>`:""}
+    </div>
+    <div class="row" style="margin-top:14px"><button class="btn" data-act="im-run" ${m.busy?"disabled":""}>${m.busy?t("im_running"):t("im_run")}</button>${m.drafts.length||m.pages.length||m.paste?`<button class="btn ghost" data-act="im-clear">${t("im_clear")}</button>`:""}</div>
+  </div>
+  ${m.drafts.length?`
+  <div class="panel" style="margin-top:18px">
+    <h3>${t("im_review",{n:m.drafts.length,f:flagged})}</h3>
+    <p class="muted note">${t("im_consult")}</p>
+    <label class="f" style="font-weight:500"><input type="checkbox" data-im="onlyFlag" ${m.onlyFlag?"checked":""}> ${t("im_only_flag")}</label>
+    <label class="f">${t("im_key")}</label>
+    <div class="row"><input type="text" data-im="key" value="${esc(m.keyText)}" style="flex:1;min-width:200px"><button class="btn sm alt" data-act="im-key">${t("im_applykey")}</button><button class="btn sm ghost" data-act="im-recheck">${t("im_recheck")}</button></div>
+  </div>
+  <div style="margin-top:14px">${list.map(draftCard).join("")}</div>
+  <div class="panel">
+    <h3>${t("im_dest")}</h3>
+    <div class="cols">
+      <div><label class="f">${t("im_tname")}</label><input type="text" data-im="dest.title" value="${esc(d.title)}"></div>
+      <div><label class="f">${t("ed_subject")}</label><input type="text" data-im="dest.subject" value="${esc(d.subject)}"></div>
+      <div><label class="f">${t("ed_exam")}</label>${sel("dest.exam",d.exam,S.exams.map(e=>[e.id,exName(e)]))}</div>
+      <div><label class="f">${t("ed_lang")}</label>${sel("dest.lang",d.lang,LANGS.map((l,i)=>[l,NATIVE[i]]))}</div>
+      <div><label class="f">${t("ed_dur")}</label><input type="number" min="0" data-im="dest.duration" value="${d.duration}"></div>
+      <div><label class="f">${t("im_per")}</label><input type="number" min="0" data-im="dest.per" value="${d.per}"></div>
+    </div>
+    <label class="f" style="font-weight:500"><input type="checkbox" data-im="dest.premium" ${d.premium?"checked":""}> ${t("ed_sub")}</label>
+    <label class="f" style="font-weight:500"><input type="checkbox" data-im="dest.shuffle" ${d.shuffle?"checked":""}> ${t("ed_shuffle")}</label>
+    <div class="row" style="margin-top:14px"><button class="btn" data-act="im-save">${t("im_save")}</button></div>
+  </div>`:""}`;
+}
+document.addEventListener("input", e=>{
+  const el=e.target, k=el.dataset.im; if (!k||!U.im) return;
+  const m=U.im;
+  if (k==="paste") m.paste=el.value;
+  else if (k==="from"||k==="to"||k==="count") m[k]=Math.max(1,parseInt(el.value)||1);
+  else if (k==="key") m.keyText=el.value;
+  else if (k==="mode"){ m.mode=el.value; render(); }
+  else if (k==="style"){
+    m.style=el.value;
+    if (m.style==="ielts"){ if (S.exams.some(x=>x.id==="ielts")) m.dest.exam="ielts"; m.dest.lang="en"; m.dest.subject="Ingliz tili"; }
+    else if (m.style==="ms" && S.exams.some(x=>x.id==="ms")) m.dest.exam="ms";
+    render();
+  }
+  else if (k==="onlyFlag"){ m.onlyFlag=el.checked; render(); }
+  else if (k.startsWith("dest.")){
+    const f=k.slice(5);
+    m.dest[f] = (f==="premium"||f==="shuffle") ? el.checked : (f==="duration"||f==="per") ? Math.max(0,parseInt(el.value)||0) : el.value;
+  }
+  else if (k.startsWith("d.")){
+    const x=m.drafts[+el.dataset.i], f=k.slice(2); if(!x) return;
+    if (f==="inc") x.include=el.checked;
+    else if (f==="a") x.a=+el.value;
+    else if (/^o\d$/.test(f)) x.o[+f[1]]=el.value;
+    else x[f]=el.value;
+  }
+});
+document.addEventListener("change", e=>{ if (e.target.id==="im-file") imLoadFile(e.target.files[0]); });
+document.addEventListener("click", e=>{
+  const b=e.target.closest("[data-act]"); if(!b||!U.im&&!String(b.dataset.act).startsWith("im-")) return;
+  const act=b.dataset.act;
+  if (act==="im-run") imRun();
+  else if (act==="im-key") imApplyKey();
+  else if (act==="im-recheck"){ recheck(); render(); }
+  else if (act==="im-save") imSave();
+  else if (act==="im-del"){ U.im.drafts.splice(+b.dataset.i,1); recheck(); render(); }
+  else if (act==="im-clear"){ U.im=null; imInit(); render(); }
+});
+
+/* ================= Hodisalar ================= */
+document.addEventListener("click", e=>{
+  const b = e.target.closest("[data-act]"); if(!b) return;
+  const act = b.dataset.act, id = b.dataset.id, E = U.ex;
+  switch(act){
+    case "setlang": S.lang = b.dataset.v; save(); render(); break;
+    case "go": go(b.dataset.v); break;
+    case "openexam": U.fExam = id; U.fSub = "all"; U.fLang = "all"; go("library"); break;
+    case "fexam": U.fExam = b.dataset.v; render(); break;
+    case "fsub": U.fSub = b.dataset.v; render(); break;
+    case "flang": U.fLang = b.dataset.v; render(); break;
+    case "quick": U.quick = +b.dataset.i; render(); break;
+    case "quickreset": U.quick = null; render(); break;
+    case "start": startExam(id); break;
+    case "unlock": if(!S.unlocked.includes(id)) S.unlocked.push(id); save(); U.modal=null; startExam(id); break;
+    case "sub": if(!S.unlocked.includes(id)) S.unlocked.push(id); save(); toast(t("t_subon")); render(); break;
+    case "closemodal": U.modal = null; U.pending = null; render(); break;
+    case "doconfirm": { const fn = U.pending; U.pending = null; U.modal = null; if (fn) fn(); render(); break; }
+    case "pick": E.ans[E.i] = +b.dataset.k; render(); break;
+    case "next": if(E.i<E.qs.length-1){E.i++; render(); window.scrollTo(0,0);} break;
+    case "prev": if(E.i>0){E.i--; render(); window.scrollTo(0,0);} break;
+    case "jump": E.i = +b.dataset.i; render(); window.scrollTo(0,0); break;
+    case "flag": E.flag[E.i] = !E.flag[E.i]; render(); break;
+    case "askfinish": U.modal = {type:"finish"}; render(); break;
+    case "finish": finishExam(false); break;
+    case "result": U.resultId = id; U.view = "result"; render(); window.scrollTo(0,0); break;
+    case "review": U.resultId = id; U.view = "review"; render(); window.scrollTo(0,0); break;
+    case "share": shareResult(id); break;
+    case "tg": shareTelegram(id); break;
+    case "ai": runAI(id); break;
+    case "addexam": {
+      const n = (U.xd.name||"").trim();
+      if (!n){ toast(t("t_exname")); break; }
+      S.exams.push({id:uid(), name:n, scoring:U.xd.scoring});
+      U.xd = {name:"",scoring:"percent"}; save(); render(); toast(t("t_saved")); break; }
+    case "delexam":
+      if (S.tests.some(x=>x.exam===id)){ toast(t("t_inuse")); break; }
+      confirmThen("c_delexam", ()=>{ S.exams = S.exams.filter(x=>x.id!==id); if(!S.exams.length) S.exams = defaultExams(); save(); });
+      break;
+    case "addq": {
+      const c = U.draft.cur;
+      if (!c.q.trim() || c.o.some(o=>!o.trim())){ toast(t("t_fill")); break; }
+      U.draft.qs.push({q:c.q.trim(), o:c.o.map(o=>o.trim()), a:c.a, topic:c.topic.trim(), exp:c.exp.trim()});
+      U.draft.cur = {q:"", o:["","","",""], a:0, topic:c.topic, exp:""};
+      render(); toast(t("t_added")); break; }
+    case "delq": U.draft.qs.splice(+b.dataset.i,1); render(); break;
+    case "bulk": {
+      const list = parseBulk(U.draft.bulk||"");
+      if (!list.length){ toast(t("t_badfmt")); break; }
+      U.draft.qs.push(...list); U.draft.bulk = ""; render(); toast(t("t_bulk",{n:list.length})); break; }
+    case "savetest": {
+      const d = U.draft;
+      if (!d.title.trim()){ toast(t("t_noname")); break; }
+      if (!d.qs.length){ toast(t("t_noq")); break; }
+      const x = {id:d.editId||uid(), title:d.title.trim(), subject:(d.subject||"—").trim(), exam:d.exam, lang:d.lang, duration:d.duration, premium:d.premium, shuffle:d.shuffle, questions:d.qs};
+      const i = S.tests.findIndex(y=>y.id===x.id);
+      if (i>=0) S.tests[i]=x; else S.tests.push(x);
+      save(); U.draft = newDraft(); render(); toast(t("t_saved")); break; }
+    case "resetdraft": U.draft = newDraft(); render(); break;
+    case "editt": {
+      const x = S.tests.find(y=>y.id===id); if(!x) break;
+      U.draft = {editId:x.id, title:x.title, subject:x.subject, exam:x.exam, lang:x.lang, duration:x.duration, premium:x.premium, shuffle:x.shuffle!==false, qs:JSON.parse(JSON.stringify(x.questions)), cur:{q:"",o:["","","",""],a:0,topic:"",exp:""}, bulk:""};
+      render(); window.scrollTo(0,0); break; }
+    case "delt":
+      confirmThen("c_deltest", ()=>{ S.tests = S.tests.filter(x=>x.id!==id); save(); });
+      break;
+    case "export": {
+      const blob = new Blob([JSON.stringify(S,null,2)],{type:"application/json"});
+      const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "sinov-backup.json"; a.click(); break; }
+    case "importbtn": document.getElementById("imp").click(); break;
+    case "resetall":
+      confirmThen("c_reset", ()=>{
+        const lang = S.lang;
+        S = {lang, owner:S.owner, exams:defaultExams(), tests:seed(), attempts:[], profile:{name:"",tg:"",aiUrl:""}, unlocked:[]};
+        save(); U.draft = null; toast(t("t_reset"));
+      });
+      break;
+  }
+});
+document.getElementById("imp").addEventListener("change", e=>{
+  const f = e.target.files[0]; if(!f) return;
+  const r = new FileReader();
+  r.onload = () => {
+    try{
+      const d = JSON.parse(r.result);
+      if (!Array.isArray(d.tests)) throw new Error("format");
+      const lang = S.lang;
+      S = {lang:d.lang||lang, owner:S.owner, exams:d.exams, tests:d.tests, attempts:d.attempts||[], profile:d.profile||{name:"",tg:"",aiUrl:""}, unlocked:d.unlocked||[]};
+      normalize(); save(); render(); toast(t("t_restored"));
+    }catch(err){ toast(t("t_badfile")); }
+  };
+  r.readAsText(f); e.target.value = "";
+});
+document.addEventListener("keydown", e=>{
+  const E = U.ex; if(!E || U.modal) return;
+  if (/INPUT|TEXTAREA|SELECT/.test(e.target.tagName)) return;
+  if (e.key==="ArrowRight" && E.i<E.qs.length-1){ E.i++; render(); }
+  else if (e.key==="ArrowLeft" && E.i>0){ E.i--; render(); }
+  else if (/^[1-4]$/.test(e.key) && +e.key<=E.qs[E.i].opts.length){ E.ans[E.i] = +e.key-1; render(); }
+  else if (e.key.toLowerCase()==="f"){ E.flag[E.i] = !E.flag[E.i]; render(); }
+});
+
+
+/* ===== Egasi rejimi va hammaga nashr ===== */
+let PUB=null;
+function applyPublished(force){
+  if(!PUB||!Array.isArray(PUB.tests)||!PUB.tests.length) return false;
+  if(S.owner && !force) return false;
+  S.tests=JSON.parse(JSON.stringify(PUB.tests));
+  if(Array.isArray(PUB.exams)&&PUB.exams.length) S.exams=JSON.parse(JSON.stringify(PUB.exams));
+  save(); return true;
+}
+fetch("tests.json",{cache:"no-store"}).then(r=>r.ok?r.json():null).then(d=>{ if(d){ PUB=d; if(applyPublished(false)) render(); } }).catch(()=>{});
+document.addEventListener("click",e=>{
+  const b=e.target.closest("[data-act]"); if(!b) return;
+  const a=b.dataset.act;
+  if(a==="pubexport"){
+    const blob=new Blob([JSON.stringify({exams:S.exams,tests:S.tests})],{type:"application/json"});
+    const el=document.createElement("a"); el.href=URL.createObjectURL(blob); el.download="tests.json"; el.click();
+  } else if(a==="pubload"){
+    if(applyPublished(true)){ render(); toast("Saytdagi testlar yuklandi"); } else toast("tests.json topilmadi");
+  } else if(a==="ownoff"){
+    S.owner=false; save(); U.view="home"; applyPublished(false); render();
+  }
+});
+/* Egasi rejimini yoqish: saytni  .../#KALIT  manzili bilan oching (KALIT = CONFIG.OWNER_KEY) */
+if(CONFIG.OWNER_KEY && location.hash==="#"+CONFIG.OWNER_KEY){
+  S.owner=true; save(); try{ history.replaceState(null,"",location.pathname+location.search); }catch(e){}
+}
+
+/* Telegram Mini App ichida ochilganda ism avtomatik olinadi */
+try{
+  const tw = window.Telegram && Telegram.WebApp;
+  if (tw){ tw.ready(); const u = tw.initDataUnsafe && tw.initDataUnsafe.user;
+    if (u && !S.profile.name){ S.profile.name = u.first_name||""; if(u.username) S.profile.tg = "@"+u.username; save(); } }
+}catch(e){}
+{"exams":[{"id":"dtm","name":"DTM","scoring":"dtm"},{"id":"ms","nameKey":"nm_ms","scoring":"level"},{"id":"att","nameKey":"nm_att","scoring":"percent"},{"id":"ielts","name":"IELTS","scoring":"ielts"},{"id":"sat","name":"SAT","scoring":"sat"}],"tests":[{"id":"fiz-dtm-1","title":"Fizika 1","subject":"Fizika","exam":"dtm","lang":"uz","duration":20,"premium":false,"shuffle":true,"questions":[{"q":"Jism 5 m/s tezlik bilan tekis harakatlanib, 12 s da qancha masofa bosadi?","o":["17 m","60 m","2,4 m","30 m"],"a":1,"topic":"Kinematika","exp":"Tekis harakatda s = v·t = 5·12 = 60 m."},{"q":"Jism tinch holatdan 2 m/s² tezlanish bilan harakatlanmoqda. 5 s dan keyin uning tezligi qancha?","o":["5 m/s","7 m/s","10 m/s","25 m/s"],"a":2,"topic":"Kinematika","exp":"v = a·t = 2·5 = 10 m/s."},{"q":"Massasi 4 kg bo'lgan jismga 12 N kuch ta'sir qilmoqda. Tezlanishi qancha?","o":["48 m/s²","3 m/s²","8 m/s²","0,33 m/s²"],"a":1,"topic":"Dinamika","exp":"Nyutonning 2-qonuni: a = F/m = 12/4 = 3 m/s²."},{"q":"Massasi 2 kg bo'lgan jism 10 m/s tezlik bilan harakatlanmoqda. Kinetik energiyasi qancha?","o":["20 J","50 J","100 J","200 J"],"a":2,"topic":"Energiya","exp":"E = mv²/2 = 2·100/2 = 100 J."},{"q":"Massasi 3 kg bo'lgan jism 5 m balandlikka ko'tarildi (g = 10 m/s²). Potensial energiyasi qancha?","o":["15 J","150 J","30 J","50 J"],"a":1,"topic":"Energiya","exp":"E = mgh = 3·10·5 = 150 J."},{"q":"Qarshiligi 10 Ω bo'lgan o'tkazgichdan 2 A tok o'tmoqda. Kuchlanish qancha?","o":["5 V","12 V","20 V","0,2 V"],"a":2,"topic":"Elektr","exp":"Om qonuni: U = I·R = 2·10 = 20 V."},{"q":"4 Ω va 6 Ω qarshiliklar ketma-ket ulangan. Umumiy qarshilik qancha?","o":["2,4 Ω","10 Ω","24 Ω","5 Ω"],"a":1,"topic":"Elektr","exp":"Ketma-ket ulanishda R = R₁ + R₂ = 10 Ω."},{"q":"Yorug'likning vakuumdagi tezligi taxminan qancha?","o":["3·10⁶ m/s","3·10⁸ m/s","3·10⁴ m/s","3·10¹⁰ m/s"],"a":1,"topic":"Optika","exp":"c ≈ 3·10⁸ m/s."},{"q":"Gaz doimiy temperaturada siqilsa, uning bosimi qanday o'zgaradi?","o":["Ortadi","Kamayadi","O'zgarmaydi","Avval ortadi, keyin kamayadi"],"a":0,"topic":"Molekulyar fizika","exp":"Boyl–Mariott qonuni: pV = const, hajm kamaysa bosim ortadi."},{"q":"Chastotasi 50 Hz bo'lgan tebranishning davri qancha?","o":["0,5 s","0,02 s","50 s","0,2 s"],"a":1,"topic":"Tebranishlar","exp":"T = 1/ν = 1/50 = 0,02 s."}]},{"id":"fiz-dtm-2","title":"Fizika 2","subject":"Fizika","exam":"dtm","lang":"uz","duration":10,"premium":false,"shuffle":true,"questions":[{"q":"Bosim formulasi qaysi?","o":["p = F·S","p = F/S","p = S/F","p = F + S"],"a":1,"topic":"Bosim","exp":"Bosim kuchning yuzaga nisbatiga teng: p = F/S."},{"q":"Arximed kuchi nimalarga bog'liq?","o":["Suyuqlik zichligi va jismning botgan hajmiga","Faqat jism massasiga","Faqat idish shakliga","Jism rangiga"],"a":0,"topic":"Bosim","exp":"F = ρ·g·V."},{"q":"Ideal gazning holat tenglamasi qaysi?","o":["pV = νRT","p = νRT·V","V = pνRT","pT = νRV"],"a":0,"topic":"Molekulyar fizika","exp":"Mendeleyev–Klapeyron tenglamasi: pV = νRT."},{"q":"Jism 20 m/s tezlik bilan vertikal yuqoriga otildi (g = 10 m/s²). Eng yuqori nuqtaga necha sekundda ko'tariladi?","o":["1 s","2 s","4 s","20 s"],"a":1,"topic":"Kinematika","exp":"t = v/g = 20/10 = 2 s."},{"q":"Tovushning havodagi tezligi taxminan qancha?","o":["34 m/s","340 m/s","3400 m/s","3·10⁸ m/s"],"a":1,"topic":"Tebranishlar","exp":"Havoda tovush tezligi taxminan 340 m/s."}]},{"id":"fiz-ms-1","title":"Fizika: sertifikat 1","subject":"Fizika","exam":"ms","lang":"uz","duration":12,"premium":true,"shuffle":true,"questions":[{"q":"1 kVt·soat necha joulga teng?","o":["3,6·10³ J","3,6·10⁶ J","3,6·10⁹ J","1000 J"],"a":1,"topic":"Energiya","exp":"1 kVt·soat = 1000 W·3600 s = 3,6·10⁶ J."},{"q":"Nyutonning 3-qonuniga ko'ra ta'sir va aks ta'sir kuchlari...","o":["Modul jihatdan teng, yo'nalishi qarama-qarshi","Modul jihatdan teng, yo'nalishi bir xil","Modul jihatdan farq qiladi","Bir jismga qo'yilgan bo'ladi"],"a":0,"topic":"Dinamika","exp":"Kuchlar har xil jismlarga qo'yilgan, modul jihatdan teng, yo'nalishi qarama-qarshi."},{"q":"Zichligi 800 kg/m³ bo'lgan suyuqlikning 0,5 m³ hajmdagi massasi qancha?","o":["400 kg","1600 kg","160 kg","40 kg"],"a":0,"topic":"Dinamika","exp":"m = ρ·V = 800·0,5 = 400 kg."},{"q":"Erkin tushish tezlanishi Yer sirtida taxminan qancha?","o":["1,6 m/s²","9,8 m/s²","98 m/s²","3,7 m/s²"],"a":1,"topic":"Kinematika","exp":"g ≈ 9,8 m/s²."},{"q":"Fokus masofasi 0,5 m bo'lgan linzaning optik kuchi qancha?","o":["0,5 dptr","2 dptr","5 dptr","0,2 dptr"],"a":1,"topic":"Optika","exp":"D = 1/F = 1/0,5 = 2 dptr."},{"q":"600 J ish 20 s da bajarildi. Quvvat qancha?","o":["30 W","12000 W","580 W","3 W"],"a":0,"topic":"Energiya","exp":"N = A/t = 600/20 = 30 W."}]},{"id":"mat-dtm-1","title":"Matematika 1","subject":"Matematika","exam":"dtm","lang":"uz","duration":15,"premium":false,"shuffle":true,"questions":[{"q":"2x + 6 = 18 tenglamani yeching.","o":["x = 4","x = 6","x = 8","x = 12"],"a":1,"topic":"Algebra","exp":"2x = 12, x = 6."},{"q":"x² − 5x + 6 = 0 tenglamaning ildizlari:","o":["1 va 6","2 va 3","−2 va −3","5 va 1"],"a":1,"topic":"Algebra","exp":"Viyet teoremasi: yig'indi 5, ko'paytma 6, demak 2 va 3."},{"q":"Radiusi 7 bo'lgan doiraning yuzi (π = 22/7):","o":["44","154","22","49"],"a":1,"topic":"Geometriya","exp":"S = πr² = (22/7)·49 = 154."},{"q":"240 ning 25 foizi nechaga teng?","o":["50","60","80","24"],"a":1,"topic":"Foiz","exp":"240·0,25 = 60."},{"q":"Arifmetik progressiyada a₁ = 3, d = 4. a₅ nechaga teng?","o":["15","19","23","17"],"a":1,"topic":"Progressiya","exp":"a₅ = a₁ + 4d = 3 + 16 = 19."},{"q":"sin 30° nechaga teng?","o":["√3/2","1/2","1","√2/2"],"a":1,"topic":"Trigonometriya","exp":"sin 30° = 1/2."},{"q":"log₂ 32 nechaga teng?","o":["4","5","6","16"],"a":1,"topic":"Logarifm","exp":"2⁵ = 32, demak 5."},{"q":"Katetlari 6 va 8 bo'lgan to'g'ri burchakli uchburchakning gipotenuzasi:","o":["9","10","12","14"],"a":1,"topic":"Geometriya","exp":"Pifagor teoremasi: √(36+64) = 10."}]},{"id":"geo-dtm-1","title":"Geografiya 1","subject":"Geografiya","exam":"dtm","lang":"uz","duration":8,"premium":false,"shuffle":true,"questions":[{"q":"Yer yuzidagi eng katta okean qaysi?","o":["Atlantika","Hind","Tinch","Shimoliy Muz"],"a":2,"topic":"Okeanlar","exp":"Tinch okean eng katta okeandir."},{"q":"Orol dengizi qaysi ikki davlat hududida joylashgan?","o":["O'zbekiston va Qozog'iston","O'zbekiston va Turkmaniston","Qozog'iston va Qirg'iziston","Tojikiston va Afg'oniston"],"a":0,"topic":"O'rta Osiyo","exp":"Orol dengizi O'zbekiston va Qozog'iston hududida joylashgan."},{"q":"Dunyodagi eng baland tog' cho'qqisi qaysi?","o":["Elbrus","Everest (Jomolungma)","Monblan","Kilimanjaro"],"a":1,"topic":"Relyef","exp":"Everest (Jomolungma) dengiz sathidan eng baland cho'qqi."},{"q":"Amudaryo qadimdan qaysi dengizga quyilgan?","o":["Kaspiy","Qora","Orol","O'rta yer"],"a":2,"topic":"O'rta Osiyo","exp":"Amudaryo Orol dengiziga quyilgan."},{"q":"Sahroi Kabir qaysi qit'ada joylashgan?","o":["Osiyo","Afrika","Avstraliya","Janubiy Amerika"],"a":1,"topic":"Qit'alar","exp":"Sahroi Kabir Afrikada joylashgan."}]},{"id":"eng-ms-1","title":"Ingliz tili: sertifikat 1","subject":"Ingliz tili","exam":"ms","lang":"en","duration":10,"premium":false,"shuffle":true,"questions":[{"q":"If I ___ more time, I would travel the world.","o":["have","had","would have","having"],"a":1,"topic":"Grammar","exp":"Second conditional: If + past simple, would + verb."},{"q":"She has lived in this city ___ 2015.","o":["for","since","from","during"],"a":1,"topic":"Grammar","exp":"'Since' is used with a specific starting point."},{"q":"Choose the word closest in meaning to 'enormous'.","o":["tiny","huge","ordinary","fragile"],"a":1,"topic":"Vocabulary","exp":"Enormous = huge."},{"q":"He suggested ___ to the cinema.","o":["to go","going","go","went"],"a":1,"topic":"Grammar","exp":"'Suggest' is followed by a gerund."},{"q":"I look forward to ___ you next week.","o":["see","seeing","saw","be seeing"],"a":1,"topic":"Grammar","exp":"'Look forward to' is followed by a gerund."},{"q":"By the time we arrived, the film ___.","o":["already started","had already started","has already started","was already starting"],"a":1,"topic":"Grammar","exp":"Past perfect for an earlier completed action."},{"q":"Choose the opposite of 'scarce'.","o":["rare","abundant","limited","poor"],"a":1,"topic":"Vocabulary","exp":"The antonym of scarce is abundant."},{"q":"Neither of the students ___ the answer.","o":["know","knows","are knowing","have known"],"a":1,"topic":"Grammar","exp":"'Neither of' is normally followed by a singular verb."}]},{"id":"ielts-demo-1","title":"IELTS Grammar & Vocabulary demo","subject":"Ingliz tili","exam":"ielts","lang":"en","duration":8,"premium":false,"shuffle":true,"questions":[{"q":"Despite ___ hard, he failed the exam.","o":["study","studying","to study","studied"],"a":1,"topic":"Grammar","exp":"'Despite' is followed by a noun or gerund."},{"q":"What does 'mitigate' mean?","o":["make less severe","make larger","ignore","repeat"],"a":0,"topic":"Vocabulary","exp":"To mitigate is to make something less severe."},{"q":"The report, ___ was published last week, caused debate.","o":["who","which","whose","what"],"a":1,"topic":"Grammar","exp":"'Which' introduces a non-defining clause about a thing."},{"q":"She is accustomed ___ early.","o":["to get up","to getting up","getting up","get up"],"a":1,"topic":"Grammar","exp":"'Be accustomed to' is followed by a gerund."},{"q":"Choose the synonym of 'ubiquitous'.","o":["rare","found everywhere","dangerous","ancient"],"a":1,"topic":"Vocabulary","exp":"Ubiquitous means present everywhere."}]},{"id":"sat-demo-1","title":"SAT Math demo","subject":"Matematika","exam":"sat","lang":"en","duration":6,"premium":false,"shuffle":true,"questions":[{"q":"If 3x + 7 = 22, what is the value of x?","o":["3","5","7","15"],"a":1,"topic":"Algebra","exp":"3x = 15, so x = 5."},{"q":"What is the slope of the line through (1, 2) and (3, 6)?","o":["1","2","3","4"],"a":1,"topic":"Linear functions","exp":"Slope = (6 − 2)/(3 − 1) = 2."},{"q":"If f(x) = 2x² − 3, what is f(4)?","o":["13","29","32","61"],"a":1,"topic":"Functions","exp":"f(4) = 2·16 − 3 = 29."},{"q":"What is 15% of 80?","o":["8","10","12","15"],"a":2,"topic":"Percentages","exp":"0.15 · 80 = 12."}]},{"id":"tar-dtm-1","title":"Tarix 1","subject":"Tarix","exam":"dtm","lang":"uz","duration":8,"premium":false,"shuffle":true,"questions":[{"q":"Amir Temur qaysi yilda tug'ilgan?","o":["1326","1336","1346","1405"],"a":1,"topic":"O'rta asrlar","exp":"Amir Temur 1336-yilda Kesh (Shahrisabz) yaqinida tug'ilgan."},{"q":"Mirzo Ulug'bek rasadxonasi qaysi shaharda qurilgan?","o":["Buxoro","Samarqand","Xiva","Toshkent"],"a":1,"topic":"O'rta asrlar","exp":"Ulug'bek rasadxonasi Samarqandda qurilgan."},{"q":"Al-Xorazmiy qaysi fanning asoschilaridan biri hisoblanadi?","o":["Algebra","Kimyo","Geografiya","Tibbiyot"],"a":0,"topic":"Fan va madaniyat","exp":"Al-Xorazmiy algebra fanining asoschisi hisoblanadi."},{"q":"O'zbekiston Respublikasi mustaqilligi qachon e'lon qilingan?","o":["1990-yil 20-iyun","1991-yil 31-avgust","1991-yil 8-dekabr","1992-yil 8-dekabr"],"a":1,"topic":"Yangi tarix","exp":"Mustaqillik 1991-yil 31-avgustda e'lon qilingan."},{"q":"Buyuk Ipak yo'li qaysi mintaqalarni bog'lagan?","o":["Xitoy va O'rta yer dengizi","Hindiston va Braziliya","Rossiya va Afrika","Yaponiya va Amerika"],"a":0,"topic":"Qadimgi davr","exp":"Ipak yo'li Sharqiy Osiyoni O'rta yer dengizi mintaqasi bilan bog'lagan."}]},{"id":"kim-ms-1","title":"Kimyo: sertifikat 1","subject":"Kimyo","exam":"ms","lang":"uz","duration":6,"premium":true,"shuffle":true,"questions":[{"q":"Tartib raqami 8 bo'lgan element qaysi?","o":["Azot","Kislorod","Uglerod","Neon"],"a":1,"topic":"Davriy jadval","exp":"8-element: kislorod (O)."},{"q":"pH = 7 bo'lgan muhit qanday?","o":["Kislotali","Neytral","Ishqoriy","Tuzli"],"a":1,"topic":"Eritmalar","exp":"pH = 7 neytral muhit."},{"q":"Eng yengil gaz qaysi?","o":["Geliy","Vodorod","Azot","Kislorod"],"a":1,"topic":"Davriy jadval","exp":"Vodorod eng yengil gaz."},{"q":"H₂SO₄ ning nomi nima?","o":["Xlorid kislota","Nitrat kislota","Sulfat kislota","Fosfat kislota"],"a":2,"topic":"Anorganik kimyo","exp":"H₂SO₄ sulfat kislota."},{"q":"CO₂ ning molyar massasi qancha (C = 12, O = 16)?","o":["28 g/mol","32 g/mol","44 g/mol","56 g/mol"],"a":2,"topic":"Hisoblashlar","exp":"12 + 2·16 = 44 g/mol."}]}]}
+render();
+</script>
+</body>
+</html>
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Sinov</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <style>
